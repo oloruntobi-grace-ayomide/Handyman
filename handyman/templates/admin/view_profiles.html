@@ -1,0 +1,154 @@
+{% extends 'admin/admin_dashboard.html' %}
+
+{% block content %}
+<div class="col-md-10 admin-dashboard-parent-b">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+
+                    <div class="col-md-2 d-flex">
+                        <div class="col-12">
+                            <label for="sorted form-label">Sorted by:</label>
+                            <select name="sort" id="sorted-by">
+                                <option value="asc" {% if sortedby == 'asc' %}selected{% endif %}>ASC</option>
+                                <option value="desc" {% if sortedby == 'desc' %}selected{% endif %}>DESC</option>
+                                <option value="none" {% if sortedby == 'none' %}selected{% endif %}>NONE</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-3 d-flex">
+                        <div class="col-12">
+                            <label for="sorted form-label">Numbers of rows:</label>
+                            <select name="limits" id="limits">
+                                <option value="25" {% if limits == '25' %}selected{% endif %}>25</option>
+                                <option value="50" {% if limits == '50' %}selected{% endif %}>50</option>
+                                <option value="100" {% if limits == '100' %}selected{% endif %}>100</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a class="btn btn-danger" role="button" id="delete-butt">
+                            <i class="fa-solid fa-trash"></i>
+                            Delete Bulk
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a role="button" class="btn btn-warning">
+                            <i class="fa-solid fa-user-slash"></i>
+                            Disable Bulk
+                        </a>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-user-input">
+                            <button class="btn btn-outline-primary" id="search-user" type="button">Search</button>
+                            </form>
+                    </div>
+                    
+               
+                </div>
+              </nav>
+        </div>
+    </div>
+    <div class="row">
+        {% with messages=get_flashed_messages(with_categories=True)%}
+            {%if messages%}
+                {% for cat,message in messages %}
+                    {% if cat=='error'%}
+                        <div class="alert alert-danger">{{message}}</div>
+                    {% else %}
+                        <div class="alert alert-success">{{message}}</div>  
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="col-12 mt-5">
+           
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">ID</th>
+                    <!-- hover on username to see their full name -->
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Lga</th>
+                    <th scope="col">Businessname</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date Joined</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% if all_users %}
+                  
+                        {% for user in all_users %}
+                            <tr>
+                                <td><input type="checkbox" name="todelete" value="{{user.user_id}}"></td>
+                                <td class="user_id">{{user.user_id}}</td>
+                                <td class="fullname-details">{{user.user_username}}
+                                    <ul class="dropdown-menu details-info">
+                                        <li class="dropdown-item">{{user.user_firstname}}</li>
+                                        <li class="dropdown-item">{{user.user_lastname}}</li>
+                                    </ul>
+                                </td>
+                                <td>{{user.user_email}}</td>
+                                <td>{{user.user_phone}}</td>
+                                <td>{{user.state.state_name}}</td>
+                                <td>{{user.lga.lga_name}}</td>
+                                <td>{{user.user_business_name}}</td>
+                                <td class="modify-user-status">{{user.user_status}}
+                                    {% if user.user_deleted != 'true' %}
+                                    <ul class="dropdown-menu status-info">
+                                        <li><a class="dropdown-item status-change" role="button">active</a></li>
+                                        <li><a class="dropdown-item status-change" role="button">disabled</a></li>
+                                    </ul>
+                                    {% endif %}
+                                </td>
+                                <td>{{user.user_date_joined}}</td>
+                                <td class="delete-col">
+                                    {% if user.user_deleted != 'true' %}
+                                    <a class="btn btn-danger delete-me" role="button"  style="font-size:12px;">
+                                        <i class="fa-solid fa-trash" style="font-size:12px;">
+                                            <span style="display:none;" class="del-id">{{user.user_id}}</span>
+                                        </i>
+                                        Delete
+                                    </a>
+                                    {% else %}
+                                    <a class="btn btn-warning" role="button"  style="font-size:12px;">
+                                            <span style="display:none;" class="del-id">{{user.user_id}}</span>
+                                        Deleted
+                                    </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                  <tr>
+                    
+                  </tr>
+                  
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+        
+    
+</div>
+
+
+
+
+</div>
+{% endblock content %}

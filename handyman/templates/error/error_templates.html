@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <meta name="description" content="Connect with skilled handymen in your area. Experience hassle-free service from professionals who care about your home and your needs."/>
+        <meta name="keywords" content="local handyman services, expert handymen near me, professional handyman solutions, reliable handymen in Lagos"/>
+        <meta name="author" content="Oloruntobi Grace"/>
+        <meta property="og:title" content="Find Trusted Handyman Services"/>
+        <meta property="og:description" content="We bring together homeowners and experienced handymen, ensuring quality workmanship and peace of mind. Your home, cared for by the best."/>
+        <meta property="og:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta property="og:url" content="{{url_for('home')}}"/>
+        <meta name="twitter:title" content="Reliable Handyman Services"/>
+        <meta name="twitter:description" content="Connecting you with trusted handymen who bring skill, care, and reliability to every job. Your home deserves the best."/>
+        <meta name="twitter:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta name="twitter:url" content="{{url_for('home')}}"/>
+        <meta name="locale" content="en-NG"/>
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fa/css/all.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='media.css')}}">
+        <title>My Handyman NG</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{url_for('static',filename='images/thefavs/apple-icon-57x57.png')}}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{url_for('static',filename='images/thefavs/apple-icon-60x60.png')}}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='images/thefavs/apple-icon-72x72.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{url_for('static',filename='images/thefavs/apple-icon-76x76.png')}}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='images/thefavs/apple-icon-114x114.png')}}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{url_for('static',filename='images/thefavs/apple-icon-120x120.png')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='images/thefavs/apple-icon-144x144.png')}}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{url_for('static',filename='images/thefavs/apple-icon-152x152.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename='images/thefavs/apple-icon-180x180.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{url_for('static',filename='images/thefavs/android-icon-192x192.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename='images/thefavs/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static',filename='images/thefavs/favicon-96x96.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='images/thefavs/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static',filename='images/thefavs/manifest.json')}}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{url_for('static',filename='images/thefavs/ms-icon-144x144.png')}}">
+        <meta name="theme-color" content="#ffffff">
+        
+        
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <!-- Brand Logo Search bar section -->
+                <div class="row">
+                    <div class="col-12 logo-div">
+                        <nav class="navbar bg-body-tertiary logo-nav">
+                            <div class="logo-nav-child">
+                                <div class="nav-brand-logo-box">
+                                        <a class="navbar-brand brand-logo" href="{{url_for('home')}}">
+                                        <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                                        <span class="first">My Handyman</span>
+                                        <span>Residential and Commercial services</span>
+                                        </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+                 <!--Navigations section-->
+                <div class="row nav-grand-parent d-none d-lg-block" id="drop"> 
+                    <div class="col-12 nav-parent">
+                        <nav class="navbar navbar-expand-md bg-body-tertiary nav-parent">
+                            <div class="nav-child">
+                                <div class="nav-grand-child-1">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#howitworks">How it works</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                                    </li>
+                                    
+                                    </ul>
+                                </div>
+                              
+                            </div>
+                                                  
+                        </nav>
+                    </div>
+                </div> 
+
+
+                <!-- Navigation section for medium screen and below (offcanvas) -->
+                <div class="row d-block d-lg-none offcanvas-nav-grand-parent">
+                  <div class="col-12 offcanvas-nav-parent">
+                    <nav class="navbar bg-body-tertiary offcanvas-nav-parent">
+                      <div class="container-fluid offcanvas-nav-child">
+                        <button class="navbar-toggler flex-start toggleme" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigations" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="offcanvas offcanvas-start nav offcanvas-nav-grand-child-2" tabindex="-1" id="navigations" aria-labelledby="offcanvasNavbarLabel">
+                          <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">HANDYMAN</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <hr>
+                          <div class="offcanvas-body offcanvas-nav-great-grand-child-2">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                              <li class="nav-item">
+                                  <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#howitworks">How it works</a>
+                              </li>
+                              
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+     
+
+                
+           
+
+<div class="row error-template-parent">
+    <div class="styling-error-message">
+        {% block error_msg %}
+            
+        {% endblock error_msg %}
+    </div>
+    <div class="error-image">
+        <img src="{{url_for('static',filename='images/error.png')}}" alt="error_pic" class="img-fluid">
+    </div>
+</div>
+
+
+
+{% include 'user/footer.html' %}
+
+
+
+              
+
+                
+           

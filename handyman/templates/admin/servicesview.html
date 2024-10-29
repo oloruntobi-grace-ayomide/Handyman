@@ -1,0 +1,266 @@
+{% extends 'admin/admin_dashboard.html' %}
+
+{% block content %}
+<div class="col-md-10 admin-dashboard-parent-b">
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid ">
+                    
+                <div class="col-md-2 d-flex">
+                    <div class="col-12">
+                        <label for="sort-services form-label">Sorted by:</label>
+                        <select name="sortservices" id="sort-services">
+                            <option value="asc" {% if sortby == 'asc' %}selected{% endif %}>ASC</option>
+                            <option value="desc" {% if sortby == 'desc' %}selected{% endif %}>DESC</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex">
+                    <div class="col-12">
+                        <label for="limit-services form-label">Numbers of rows:</label>
+                        <select name="limitservices" id="limit-services">
+                            <option value="25" {% if limit == '25' %}selected{% endif %}>25</option>
+                            <option value="50" {% if limit == '50' %}selected{% endif %}>50</option>
+                            <option value="100" {% if limit == '100' %}selected{% endif %}>100</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger">
+                        Deletebulk
+                    </button>
+                </div>
+                    
+                <div class="col-md-2">
+                    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addservices">
+                        Add Service
+                    </button>
+                </div>
+
+                <div class="col-md-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-service-input">
+                        <button class="btn btn-outline-primary" type="button" id="search-service">Search</button>
+                    </form>
+                </div>
+                </div>
+              </nav>
+        </div>
+    </div>
+    <div class="row">
+        {% with messages=get_flashed_messages(with_categories=True)%}
+            {%if messages%}
+                {% for cat,message in messages %}
+                    {% if cat=='error'%}
+                        <div class="alert alert-danger text-center">{{message}}</div>
+                    {% else %}
+                        <div class="alert alert-success text-center">{{message}}</div>  
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="col-12 mt-2">
+           
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Service name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Icon</th>
+                    <th scope="col">Alt</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">Date Added</th>
+                    <th scope="col">Del</th>
+                    <th scope="col">Edit</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% if services %}
+                  
+                        {% for service in services %}
+                            <tr>
+                                <td><input type="checkbox" name="selector" value="{{service.handyservice_id}}"></td>
+                                <td>{{service.handyservice_id}}</td>
+                                <td>{{service.handyservice_name}}</td>
+                                <td>{{service.handyservice_description}}</td>
+                                <td>{{service.handyservice_icon}}</td>
+                                <td>Image picture of a {{service.handyservice_icon_alt}}</td>
+                                <td>{{service.handyservice_picture}}</td>
+                                <td>{{service.handydate_added}}</td>
+                                <td>
+                                    <a class="btn btn-danger delete-service" role="button"  style="font-size:12px;">
+                                        <i class="fa-solid fa-trash" style="font-size:12px;">
+                                            <span style="display:none;" class="delete-id">{{service.handyservice_id}}</span>
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning edit-service" role="button" style="font-size:12px;" 
+                                       data-bs-toggle="modal" 
+                                       data-bs-target="#editServiceModal"
+                                       data-id="{{service.handyservice_id}}"
+                                       data-name="{{service.handyservice_name}}"
+                                       data-description="{{service.handyservice_description}}"
+                                       {% if service.handyservice_icon %}
+                                       data-icon="/static/images/{{service.handyservice_icon}}"
+                                       {% else %}
+                                       data-icon=""
+                                       {% endif %}
+                                    
+                                       {% if service.handyservice_picture %}
+                                       data-picture="/static/images/{{service.handyservice_picture}}"
+                                       {% else %}
+                                       data-picture=""
+                                       {% endif %}
+
+                                       data-iconalt="{{service.handyservice_icon_alt}}"
+                                       >
+
+                                        <i class="fa-solid fa-file-pen" style="font-size:12px;"></i>
+                                        Edit
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                  <tr>
+                    
+                  </tr>
+                  
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+        
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- Modal to add services -->
+  <div class="modal fade add-services-modal" id="addservices" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Services</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/handyman/add/service/" method="POST" enctype="multipart/form-data" id="addServiceForm">
+                {{ form.csrf_token }}
+                <div class="mb-3">
+                    {{form.service_name(class="form-control input noround",placeholder="Services Name")}}
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="icon" id="" ><span><strong>Service Icon</strong></span>
+                </div>
+                <div class="mb-3">
+                    {{form.service_icon_alt(class="form-control input noround",placeholder="Services Icon Alt")}}
+                   
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="picture" id=""><span><strong>Service Picture (Optional)</strong></span>
+                </div>
+                <div class="mb-3">
+                    {{form.description(class="form-control input noround",placeholder="Services Description", rows="5")}}
+                   
+                </div>
+
+                <div class="mb-3">
+                    {{form.submit(class="form-control input noround btn btn-success ")}}
+                </div>
+                
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!-- Modal to edit services -->
+           
+<div class="modal fade add-services-modal" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editServiceModalLabel">Edit Service</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id='editServiceForm'>
+                   
+                    <input type="hidden" name="serviceid" id="service-id" />
+                    <div class="mb-3">
+                        <input type="text" name="servicename" id="service-name" class="form-control input noround" placeholder="Service Name">
+                    </div>
+                    <div class="mb-3">
+                        <span class="d-block"><strong>Service Icon</strong></span>
+                        <img id="service-icon-preview" src="" alt="Service Icon" style="max-width: 100px; display: none;" />
+                        <input type="file" name="icon">
+                       
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" name="serviceiconalt" id="service-icon-alt" class="form-control input noround" placeholder="Service Icon Alt">
+                    </div>
+                    <div class="mb-3">
+                        <span class="d-block"><strong>Service Picture (Optional)</strong></span>
+                        <img id="service-picture-preview" src="" alt="Service Picture" style="max-width: 150px; display: none;" />
+                        <input type="file" name="picture">
+                       
+                    </div>
+                    <div class="mb-3">
+                        <textarea name="description" id="service-description" class="form-control input noround" placeholder="Service Description" rows="5"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control input noround btn btn-success" id='edit-update'>Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock content %}

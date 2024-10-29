@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <meta name="description" content="Connect with skilled handymen in your area. Experience hassle-free service from professionals who care about your home and your needs."/>
+        <meta name="keywords" content="local handyman services, expert handymen near me, professional handyman solutions, reliable handymen in Lagos"/>
+        <meta name="author" content="Oloruntobi Grace"/>
+        <meta property="og:title" content="Find Trusted Handyman Services"/>
+        <meta property="og:description" content="We bring together homeowners and experienced handymen, ensuring quality workmanship and peace of mind. Your home, cared for by the best."/>
+        <meta property="og:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta property="og:url" content="{{url_for('home')}}"/>
+        <meta name="twitter:title" content="Reliable Handyman Services"/>
+        <meta name="twitter:description" content="Connecting you with trusted handymen who bring skill, care, and reliability to every job. Your home deserves the best."/>
+        <meta name="twitter:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta name="twitter:url" content="{{url_for('home')}}"/>
+        <meta name="locale" content="en-NG"/>
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fa/css/all.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='media.css')}}">
+        <title>My Handyman NG</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{url_for('static',filename='images/thefavs/apple-icon-57x57.png')}}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{url_for('static',filename='images/thefavs/apple-icon-60x60.png')}}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='images/thefavs/apple-icon-72x72.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{url_for('static',filename='images/thefavs/apple-icon-76x76.png')}}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='images/thefavs/apple-icon-114x114.png')}}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{url_for('static',filename='images/thefavs/apple-icon-120x120.png')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='images/thefavs/apple-icon-144x144.png')}}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{url_for('static',filename='images/thefavs/apple-icon-152x152.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename='images/thefavs/apple-icon-180x180.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{url_for('static',filename='images/thefavs/android-icon-192x192.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename='images/thefavs/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static',filename='images/thefavs/favicon-96x96.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='images/thefavs/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static',filename='images/thefavs/manifest.json')}}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{url_for('static',filename='images/thefavs/ms-icon-144x144.png')}}">
+        <meta name="theme-color" content="#ffffff">
+        
+        
+    </head>
+    <body>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+
+                    <!-- Brand Logo Search bar section -->
+                    <div class="row">
+                        <div class="col-12 logo-div">
+                            <nav class="navbar bg-body-tertiary logo-nav">
+                                <div class="logo-nav-child">
+                                    <div class="nav-brand-logo-box">
+                                            <a class="navbar-brand brand-logo" href="{{url_for('home')}}">
+                                            <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                                            <span class="first">My Handyman</span>
+                                            <span>Residential and Commercial services</span>
+                                            </a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+
+
+                    <!--Navigations section-->
+                    <div class="row nav-grand-parent d-none d-lg-block" id="drop"> 
+                        <div class="col-12 nav-parent">
+                            <nav class="navbar navbar-expand-md bg-body-tertiary nav-parent">
+                                <div class="nav-child">
+                                    <div class="nav-grand-child-1">
+                                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('home')}}#howitworks">How it works</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                                        </li>
+                                        
+                                        </ul>
+                                    </div>
+                                    {% if session.get('user_id') == None %}
+                                    <div class="nav-grand-child-2">
+                                        <a role="button" href="{{url_for('login')}}" class="btn d-inline-block login">Login
+                                        </a>
+                                        <a role="button" href="{{url_for('sign_up')}}" class="btn d-inline-block signup">Sign up
+                                        </a>
+                                    </div>
+                                    {% endif %}
+                                    {% if session.get('user_id') != None %}
+                                    <div class="nav-grand-child-3">
+                                        <div class="dropdown profile-dropdown" >
+                                                <a class="dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                                                    <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image">Hi {{user_online.user_username}}
+                                                {% else%}
+                                                    <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image">Hi {{user_online.user_username}}
+                                                {% endif %}
+                                                </a>
+                                                <div class="profile-dropdown-child">
+                                                
+                                                    <ul class="dropdown-menu">
+                                                        <li class="first">
+                                                            <img src="{{url_for('static',filename='images/user.png')}}"alt="user image" style="width:30px !important; display: inline-block;">
+                                                            <span style="display: inline-block;">{{user_online.user_username}}</span>
+                                                        </li>
+                                                        <hr>
+                                                        <li><a class="dropdown-item" href="{{url_for('user_dashboard')}}">My dashboard</a></li>
+
+                                                        <li><a class="dropdown-item" href="{{url_for('my_profile')}}">View profile</a></li>
+                                                        
+                                                        <li><a class="dropdown-item" href="{{url_for('update_password')}}">Change password</a></li>
+
+                                                        <li><a class="dropdown-item" href="{{url_for('log_out')}}">Log out</a></li> 
+                                                    </ul>
+                                                </div> 
+                                            
+                                        </div>     
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                                    
+                            </nav>
+                        </div>
+                    </div> 
+
+
+
+
+                    <!-- Navigation section for medium screen and below (offcanvas) -->
+                    <div class="row d-block d-lg-none offcanvas-nav-grand-parent">
+                    <div class="col-12 offcanvas-nav-parent">
+                        <nav class="navbar bg-body-tertiary offcanvas-nav-parent">
+                        <div class="container-fluid offcanvas-nav-child">
+                            <button class="navbar-toggler flex-start toggleme" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigations" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="nav offcanvas-nav-grand-child1 flex-end me-3">
+                            {% if session.get('user_id') != None %}
+                                <div class="dropdown offcanvas-profile-dropdown" >
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                                            <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image" width="30px">Hi {{user_online.user_username}}
+                                        {% else%}
+                                            <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image" width="30px">Hi {{user_online.user_username}}
+                                        {% endif %}
+                                    </a>
+                                    <div class="offcanvas-profile-dropdown-child">
+                                    <ul class="dropdown-menu">
+                                        <li class="first">
+                                            <img src="{{url_for('static',filename='images/user.png')}}" alt="user image" style="width:30px !important; display: inline-block;">
+                                            <span style="display: inline-block;">{{user_online.user_username}}</span>
+                                        </li>
+                                        <hr>
+
+                                            <li><a class="dropdown-item" href="{{url_for('user_dashboard')}}">My dashboard</a></li>
+
+                                            <li><a class="dropdown-item" href="{{url_for('my_profile')}}">View profile</a></li>
+                                        
+                                            <li class="d-md-none d-block"><a class="dropdown-item" href="{{url_for('edit_profile')}}">Edit Profile</a></li>
+
+                                            <li class="d-md-none d-block"><a class="dropdown-item" href="{{url_for('my_profile')}}#viewreviews">See reviews</a></li>         
+
+                                            <li><a class="dropdown-item" href="{{url_for('update_password')}}"> Change Password</a></li>
+
+                                            <li class="d-md-none d-block"><a class="dropdown-item" href="#">settings</a></li>
+
+                                            <li><a class="dropdown-item" href="{{url_for('log_out')}}">Log out</a></li> 
+                                    </ul>
+                                    </div> 
+                                </div>
+                            {% endif %}
+                            
+                            {% if session.get('user_id') == None %}
+                            <div class="offcanvas-buttons">
+                                <a role="button" href="{{url_for('login')}}" class="btn d-inline-block login">Login
+                                </a>
+                                <a role="button" href="{{url_for('sign_up')}}" class="btn d-inline-block signup">Sign up
+                                </a>
+                            </div>
+                            {% endif %}
+                            
+                            </div>
+
+                            <div class="offcanvas offcanvas-start nav offcanvas-nav-grand-child-2" tabindex="-1" id="navigations" aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">HANDYMAN</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <hr>
+                            <div class="offcanvas-body offcanvas-nav-great-grand-child-2">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#howitworks">How it works</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                                </li>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                        </nav>
+                    </div>
+                    </div>
+
+
+
+                    
+
+                    <!-- Dasboard template starts here -->
+
+                    <div class="row user-dashboard-grand-parent">
+
+                        <div class="col-md-3 d-md-block d-none user-dashboard-parent-a">
+                            <div class="user-dashboard-child-1a">
+                                <div class="image-profile">
+                                    {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                                        <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image">
+                                    {% else%}
+                                    <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <h6>{{user_online.user_username}}</h6>
+                                    
+                                    <p class="online-presence">online</p>
+                                </div>               
+                            </div>
+                            <div class="user-dashboard-child-2a">
+                                <a href="{{url_for('user_dashboard')}}">
+                                <i class="fa fa-dashboard"></i>
+                                My Dasboard
+                                </a>
+                               
+                            </div>
+                            <hr class="section-divider">
+                            <div class="user-dashboard-child-3a">
+                                <ul>
+                                    <li>
+                                        <a href="{{url_for('my_profile')}}">
+                                            <i class="fa-regular fa-eye"></i>
+                                            View Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url_for('edit_profile')}}">
+                                            <i class="fa fa-edit"></i>
+                                            Edit Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url_for('my_profile')}}#viewreviews">
+                                            <i class="fa-solid fa-star"></i>
+                                            See reviews
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-cog"></i>
+                                            settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{url_for('log_out')}}">
+                                            <i class="fa fa-power-off"></i>
+                                        Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        
+                        </div>
+                        <div class="col-md-9 user-dashboard-parent-b">
+                            {% block content %}
+                                {% with messages = get_flashed_messages(with_categories=True)%}
+                                {%if messages %}
+                                {% for cat,message in messages %}
+                                        {% if cat == 'error'%}
+                                        <div class="alert alert-danger text-center">{{message}}</div>
+                                        {% else %}
+                                        <div class="alert alert-success text-center">{{message}}</div>  
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+
+                            <div class="container-fluid user-dashboard-body">
+                                <div class="row user-dashboard-child-1b">
+
+                                    <div class="col-12 user-dashboard-grand-child-2b">
+
+                                        <div class="row minor-display-parent">
+                                            <div class="col-md-3 user-dashboard-great-grand-child-2b"  style="background-color:blue;">
+                                                <div class="minor-display">
+                                                    <div class="child-1">
+                                                        <i class="fa-solid fa-star" ></i>
+                                                    </div>
+                                                    <div class="child-2">
+
+                                                        <p class="record-counter" id="#notification-count">{{unread_count}}</p>
+                                                        <p>Recent reviews</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 user-dashboard-grand-child-3b">
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h3>Notifications:</h3>
+                                                {% if unread_notifications %}
+                                                
+                                                    {% for notification in unread_notifications %}
+                                                        <div class="notification" data-notification-id="{{ notification.id }}">
+                                                            
+                                                            <p class="message {% if notification.is_read %}gray-text {% endif %}">
+                                                                {{ notification.message }}
+                                                                <small class="ps-5" style="text-align: right;">{{ notification.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                                            </p>
+                                                            
+                                                            <div class="hidden-content" style="display: none;">
+                                                                <p><i class="fa-solid fa-trash-can delete-btn" data-notification-id="{{ notification.id }}"></i></p>
+                                                                <p>{{notification.content}}</p>
+                                                                <strong>Rating: 
+                                                                    {% for i in range(notification.rating) %}
+                                                                        <span class="filled-gold">★</span>
+                                                                    {% endfor %}
+                                                                </strong>
+                                                                
+                                                            </div>
+
+                                                        </div>
+                                                    {% endfor %}
+                                            
+                                                    {% else %}
+                                                        <p>You have no unread notifications.</p>
+                                                    {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                        </div>
+                        
+
+                            {% endblock content%}
+                        </div>
+                    </div>
+
+
+
+
+
+            <!-- Dasboard template ends here -->
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Footer section -->
+        <div class="row footer-great-grand-parent edited-to-suit-page">
+
+            <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-1">
+                <div class="footer-parent-1">
+                <a class="navbar-brand footer-logo" href="#">
+                <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                </a>
+                <span>My Handyman</span>
+                <span>Residential and Commercial services</span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-2">
+                <h3 class="col-12">Useful Links</h3>
+
+                <div class="row footer-great-grand-child-1">
+
+                    <div class="col-md-6  col-sm-6">
+                        <ul class="navbar-nav footer-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('home')}}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6  col-sm-6">
+                        <ul class="navbar-nav footer-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('home')}}#howitworks">How it works</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('reviews')}}">Reviews</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                        </li>
+                        
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-3">
+                <h3 class="mb-3">CONTACT INFO</h3>
+            
+                <a href='#'class="email">
+                <img src="{{url_for('static',filename='images/gmail.png')}}"  alt="email logo leading to our email adrress">
+                <span>MYHANDYMAN@GMAIL.COM</span>
+                </a>
+                <div class="other-social-handles">
+                <a href=""><img src="{{url_for('static',filename='images/facebook.png')}}" alt="facebook logo leading to our facebook handle"></a>
+                <a href=""><img src="{{url_for('static',filename='images/instagram.png')}}" alt="instagram logo leading to our instagram handle"></a>
+            </div> 
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-4">
+            <h3 class="col-12">Newsletter</h3>
+
+            <form action="/handyman/subscribe/email/" method="POST">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <input type="email" name="subscriber-email"  placeholder="Email" class="form-control">
+                <button class="btn btn-primary col-md-6 col-sm-8 mt-2 text-center">Subscribe</button>
+            </form>       
+            </div> 
+        </div>
+        
+
+        <!-- copyright section -->
+        <div class="row">
+            <div class="col copyright-footer">
+                <p>&copy; 2024 MY HANDYMAN.NG  <a href=""> | PRIVACY POLICY | </a>  ALL RIGHT RESERVED.</p>
+            </div>
+        </div>
+
+        
+
+    </div>
+    </div>
+    </div> 
+
+    <script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{url_for('static',filename='jquery-3.7.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='jquery.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('#user_lga_profile').click(function() {
+            var stateid = $('#user_state_profile').val();
+            if (stateid) {
+                $(this).load('/handyman/lga/loads/?id=' + stateid);
+            }
+            })
+
+
+            $('.notification').click(function() {
+        
+                $(this).find('.hidden-content').toggle();
+
+                var toChange = $(this).find('.message');
+                var notificationId = $(this).data('notification-id');
+
+                if (toChange.css('color') === 'rgb(0, 0, 0)') {
+
+                    
+
+                    var data2send={ csrf_token:'{{csrf_token()}}'}
+
+                    $.ajax({
+                        url: '/notifications/mark_read/' + notificationId,
+                        dataType:'text', 
+                        type: 'POST',
+                        data: data2send,
+                        success: function(response) {
+                            toChange.css("color", "gray"); 
+                            console.log(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            
+                            console.error("Error marking notification as read:", error);
+                        }
+                        
+                    })
+                } else {
+                    toChange.css('color', 'gray'); 
+                }
+        });
+
+            
+            $(document).on('click', '.delete-btn', function() {
+                
+                var notificationId = $(this).data('notification-id');
+                var notificationElement = $(this).closest('.notification');
+
+            
+                if (confirm("Are you sure you want to delete this notification?")) {
+
+                $.ajax({
+                url: '/notifications/delete/' + notificationId,
+                type: 'POST',
+                data: { csrf_token: '{{ csrf_token() }}' }, 
+                success: function(response) {
+                    if (response.success) {
+                        console.log(response.message);
+                        
+                        notificationElement.remove();
+                    } else {
+                        console.error("Failed to delete the notification:", response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error deleting notification:", error);
+                }
+            });
+        }
+    });
+
+    
+        })
+    </script>
+
+
+
+    </body>
+</html>

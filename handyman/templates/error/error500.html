@@ -1,0 +1,9 @@
+{% extends 'error/error_templates.html' %}
+
+{% block error_msg %}
+        <h3>Not Found</h3>
+       <p>Oops! Something went wrong on our end. Please try again later or contact support.
+       </p>
+       
+       <a href="{{url_for('home')}}">Go To Home</a>  
+{% endblock error_msg %}

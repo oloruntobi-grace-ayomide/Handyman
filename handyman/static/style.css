@@ -1,0 +1,1858 @@
+/* The font family That will be used starts here */
+@font-face {
+    font-family:handyfonta;
+    src    : url(myfonts/Cinzel-Regular.ttf) format('truetype'),
+             url(myfonts/Cinzel-Regular.woff) format('woff'),
+             url(myfonts/Cinzel-Regular.eot)  format('embedded-opentype'),
+             url(myfonts/Cinzel-Regular.svg) format('svg');
+
+}
+
+@font-face {
+    font-family:handyfontb;
+    src    : url(myfonts/PlayfairDisplay-Regular.ttf) format('truetype'),
+             url(myfonts/PlayfairDisplay-Regular.woff) format('woff'),
+             url(myfonts/PlayfairDisplay-Regular.eot)  format('embedded-opentype'),
+             url(myfonts/PlayfairDisplay-Regular.svg) format('svg');
+
+}
+
+@font-face {
+    font-family:handyfontc;
+    src    : url(myfonts/Lato-Regular.ttf) format('truetype'),
+             url(myfonts/Lato-Regular.woff) format('woff'),
+             url(myfonts/Lato-Regular.eot)  format('embedded-opentype'),
+             url(myfonts/Lato-Regular.svg) format('svg');
+
+}
+/* The font family That will be used ends here */
+
+
+/* general stylings starts here  */
+*{
+    padding: 0px;
+    margin: 0px; 
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: handyfontc;
+}
+
+body{
+    background-color: #fff;
+    min-height:500px;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: handyfontb;
+    color: #003366;
+}
+
+p{
+    font-family:handyfontc;
+}
+
+button{
+    font-family: handyfontb !important;
+}
+
+a{
+    text-decoration: none;
+    font-family: handyfontb !important;
+    color: #003366 !important;
+}
+
+ul li{
+    list-style: none; 
+}
+
+
+/* General styling ends here  */
+
+
+
+/* for most of the div sections header */
+
+.section-header{
+    padding: 20px;
+    text-align: center;
+    margin:30px 0px 15px 0px;
+}
+
+.section-header h1{
+    font-size: 50px;
+    font-family: handyfonta;
+    margin: auto;
+}
+
+
+
+/* general direction button design*/
+.director-butt{
+    padding: 10px 0px;
+    text-align: center;
+}
+
+.director-butt a{
+    background-color: #007bff ;
+    color:#fff !important;
+    font-size: 25px;
+    border: none;
+    padding: 8px 20px;
+    margin: auto;
+}
+
+.director-butt a:hover{
+    background-color: #003366;
+}
+
+
+/* All other pages banner */
+.all-banner-page-img-1{
+    background-image:url(images/writingaboutus.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 80%;
+    background-position:center;
+    background-attachment:fixed; 
+    height:200px;
+    position: relative;
+}
+
+.all-banner-page-img-2{
+    background-image:url(images/customerphoning.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 80%;
+    background-position:center;
+    background-attachment: fixed; 
+    height:200px;
+    position: relative;
+}
+
+/* this will affect the headers all the subpages */
+.services-section-header h1{
+    font-size: 80px
+}
+
+.services-section-header-1 h1{
+    color:#fff;
+    font-size: 80px
+}
+
+/* First section of the home page and subsequently other pages header this contain 
+the brand logo for the website */
+
+.logo-div{
+    background-color: #657184;
+}
+
+.logo-nav{
+    background-color:transparent!important;
+}
+
+.logo-nav-child{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width:100% !important; 
+} 
+
+.nav-brand-logo-box{
+    width:25% !important;
+    margin:auto;
+}
+
+a.brand-logo{
+    display: block !important; 
+    text-decoration: none;
+    text-align: center;
+}
+
+a.brand-logo img{
+    width:60px;
+    display:block;
+    margin:auto;
+}
+
+a.brand-logo span{
+    font-size: 8px;
+    font-weight: bold;
+    font-family: handyfonta;
+    color:#fff;
+    display:block;
+}
+
+a.brand-logo span.first{
+    font-size: 12px;
+    color:#fff;
+}
+/* end of the brand logo div */
+
+
+
+
+
+/* Navigations section top for large screen starts here*/
+
+.style-changer-style{
+    position:sticky;
+    top:0px;
+    box-shadow:0px 2px 5px -3px black; 
+    z-index:1000000; 
+}
+
+.nav-parent{
+    background-color: #fff !important;
+    padding: 15px 0px;
+}
+
+.nav-child{
+    background-color: #fff !important;
+    width:100% !important;
+    display: flex;
+}
+
+.nav-grand-child-1{
+    width:80%;
+}
+
+.nav-grand-child-1 ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-grand-child-1 ul li a.nav-link{
+    font-size: 20px;
+    font-weight: 200 !important;
+}
+
+.nav-grand-child-1 ul li a.nav-link:hover{
+    color: #007bff !important;
+    transition:0.2s;
+    text-decoration:underline;
+}
+
+.nav-grand-child-2{
+    display: flex;
+    justify-content: space-around;
+    width:20%;
+    margin: auto !important;
+    border-left:solid 2px #007bff;
+}
+
+.nav-grand-child-2 a.login, a.signup{
+    background-color: #007bff;
+    color: #fff !important;
+    font-size:20px;
+    padding:4px 10px !important;
+    height:35px;
+    border: none !important;  
+}
+
+.nav-grand-child-2 a.login:hover, a.signup:hover{
+    background-color: #003366;
+}
+
+.nav-grand-child-3{
+   justify-self:center;
+   border-left:solid 2px #007bff;
+   width:20%;
+   padding-left:20px;
+   padding-right:20px;
+   margin: auto !important;
+}
+
+.profile-dropdown a.dropdown-toggle img{
+    width:40px ;
+    height:40px;
+    border-radius:50%;
+}
+
+.profile-dropdown-child ul li{
+    margin-top:10px !important;
+}
+
+.profile-dropdown-child ul li.first{
+    margin-left:15px;  
+}
+
+.profile-dropdown-child ul li.first span{
+    color: #003366;
+    font-family:handyfontb !important; 
+    font-size: 18px;
+}
+
+.profile-dropdown-child ul li a{
+    color:#007bff !important;
+}
+
+.profile-dropdown-child ul li a:hover{
+    background-color:rgba(0,0,0, 0.175);
+    transition:0.2s !important; 
+}
+
+/* the end of navigation for big screens */
+
+
+
+
+/* Navigations section top for medium screen screen starts here */
+
+.offcanvas-nav-parent{
+    background-color: #fff !important;
+    padding: 15px 0px;
+}
+
+.offcanvas-nav-child button.toggleme{
+    border:none !important;
+    box-shadow: none !important;
+}
+
+.offcanvas-nav-child button.toggleme span{
+    width:30px !important;
+}
+
+.offcanvas-nav-grand-child1{
+    width:40%;
+    display:flex;
+    justify-content: space-around;
+}
+
+.offcanvas-profile-dropdown a.dropdown-toggle img{
+    width:40px ;
+    height:40px;
+    border-radius:50%;
+}
+
+.offcanvas-profile-dropdown .profile-dropdown-child ul{
+    margin-top:10px !important; 
+
+}
+
+.offcanvas-profile-dropdown-child{
+    z-index:10000000000000 !important;
+    position:absolute;
+}
+
+.offcanvas-profile-dropdown-child ul li.first{
+    margin-left:15px; 
+}
+
+.offcanvas-profile-dropdown-child ul li.first span{
+    color: #003366;
+    font-family:handyfontb !important; 
+    font-size: 18px;
+}
+.offcanvas-profile-dropdown-child ul li a{
+    color:#007bff !important;
+}
+
+.offcanvas-profile-dropdown-child ul li a:hover{
+    background-color:rgba(0,0,0, 0.175);
+    transition:0.2s !important; 
+}
+
+.offcanvas-buttons{
+    display: flex;
+    justify-content: space-between;
+    /* width:50%; */
+}
+.offcanvas-buttons a.login, a.signup{
+    background-color: #007bff;
+    color: #fff !important;
+    font-size:20px;
+    padding:4px 10px !important;
+    height:35px;
+    margin-left:20px;
+    border: none !important; 
+}
+
+.offcanvas-buttons a.login:hover, a.signup:hover{
+    background-color: #003366;
+}
+
+.offcanvas-nav-grand-child-2{
+    width:40% !important;  
+}
+
+.offcanvas-nav-great-grand-child-2 ul li a.nav-link{
+    font-size: 20px;
+    font-weight: 200 !important;
+    padding-left:10px;
+}
+
+.offcanvas-nav-great-grand-child-2 ul li a.nav-link:hover{
+    color: #007bff !important;
+    transition:0.2s;
+    text-decoration:underline;
+}
+
+/* Navigations section top for medium screen screen ends here */
+
+
+
+
+
+/*User login page section starts here*/
+
+.login-grand-parent{
+    margin-top:30px;
+}
+
+.login-parent-2 h3{
+    text-align:center !important;
+    margin-bottom:20px;
+    color: #007bff;
+    text-decoration:underline;
+    text-decoration-color:#657184;
+    text-decoration-thickness: 2px; 
+    text-decoration-style: double;
+}
+
+.login-child input{
+    margin-bottom:7px;
+    margin-top: 5px;
+    border-radius:0px !important;
+    border:#007bff solid 1px;
+}
+
+.login-butt{
+    background-color: #007bff !important;
+    color:#fff !important;
+    font-size: 20px;
+    border: none;
+    margin-top: 10px;
+    display: block;
+}
+
+.login-butt:hover{
+    background: #003366 !important;
+}
+
+.login-child a{
+    font-size:12px;
+    color:#007bff !important;
+    font-family: handyfontc !important;
+}
+
+.login-span{
+    margin-top: 15px;
+    display:inline-block;
+    font-size:12px;
+    color:#007bff !important;
+    font-family: handyfontc !important;
+}
+
+a.signup-link-from-login{
+    display: inline-block;
+    font-size: 16px !important;
+    margin-top:3px;
+    font-family:handyfontb !important;
+    text-decoration:underline !important;
+}
+
+/*User login page section ends here*/
+
+
+
+
+
+
+/* User sign up page section starts here */
+
+.signup-parent{
+    margin-top: 45px;
+    border-radius: 15PX;
+    background-color: #fff;
+    padding:10px 15px;
+}
+
+form#signup-form div input, .bio, select, textarea, .select-me{
+    border:#007bff 1px solid !important;
+    border-radius:0px;;
+}
+
+form#signup-form div input:hover, select:hover, textarea:hover, .bio:hover, .select-me:hover{
+    border:#007bff 1px solid !important;
+}
+
+form#signup-form div input:focus, select:focus, textarea:focus, .bio:focus,.select-me:focus{
+    border:#007bff 2px solid !important;
+}
+
+form#signup-form div .submit-butt{
+    background-color: #007bff !important;
+    color:#fff !important;
+    font-size:20px;
+    border: none;
+}
+
+form#signup-form div .submit-butt:hover{
+    background-color: #003366;
+}
+
+form#signup-form div .userwarning{
+    font-size: 12px;
+    color:#003366 !important;
+    display:block;
+}
+
+form#signup-form div .agreement-div{
+    display: flex;
+    justify-content: center;
+}
+
+form#signup-form div .agreement-div p{
+    display: inline-block;
+    color:#003366;
+}
+
+form#signup-form div label{
+    color:#007bff;
+    font-size: 16px;
+    font-family: handyfontc;
+}
+form#signup-form hr{
+    margin-top: 50px !important;
+}
+
+.services-option-notice p{
+    text-align: center;
+    color:#007bff;
+    font-size:20px !important;
+    word-spacing:2px;
+}
+
+.services-options span{
+    color: #007bff;
+    margin-right:10px;
+    font-size:18px;
+}
+
+.agreement-div p.beforechecker{
+    margin-top: 15px;
+    display:block;
+    font-size:14px;
+    color:#007bff !important;
+    font-family: handyfontc !important;
+}
+
+.agreement-div p.beforechecker a{
+    color:#007bff !important;
+    font-size: 18px;
+    font-family: handyfontc;
+    text-decoration: underline;
+}
+
+.agreement-div p span{
+    color:red;
+}
+
+
+/* User sign up page section ends here */
+
+
+
+
+
+/* carousel/banner section starts here  */
+.banner-child{
+    height: 600px;
+    width: 100%;
+    position: relative;
+    background-color:#f5f7fa;
+}
+
+.banner-grand-child-1{
+    position: absolute;
+}
+
+.carousel-item img{
+    height:600px;
+}
+
+.carousel-item-child{
+    height: 60%;
+    width:95%;
+    position: absolute;
+    left:3%;
+    right:7%;
+    top:45%;
+    bottom: 0%;
+    text-align: center;
+    z-index: 1000;
+}
+
+.carousel-item-child h1{
+    font-family:handyfonta;
+    font-size: 30px;
+    color:#fff!important
+}
+
+.carousel-item-child h1 .emphacytext{
+    font-size: 45px;
+    font-family:handyfonta ;
+    color:#007bff !important
+}
+
+.carousel-item-child a{
+    background-color: #007bff;
+    color:#fff !important;
+    font-size: 25px;
+    border: none;
+    padding: 8px 20px;
+    margin-top: 20px;
+}
+
+.carousel-item-child a:hover{
+    background-color: #003366;
+}
+
+.banner-grand-child-2{
+    height:220px;
+    width:95%;
+    position: absolute;
+    left:3%;
+    right:3%;
+    top:15%;
+    bottom: 0%;
+    margin: auto;
+    background:rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* carousel/banner section ends here  */
+
+
+
+
+
+
+
+
+
+/* services display starts here  */
+
+.featured-services-parent{
+    display: flex;
+    gap: 15px 10px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+
+.featured-services{
+    width:300px;
+    height:320px;
+    text-align: center;
+    padding: 15px 0px ;
+    box-shadow:2px 3px 4px #00153A ; 
+}
+
+.featured-services img{
+    width:70px;
+    margin: auto;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.featured-services  h3{
+    font-size: 30px;
+    padding: 10px 0px;
+}
+
+.featured-services  p{
+    font-family: handyfontc;
+    font-size: 17.5px;
+    word-spacing: 1.3px;
+    width:250px;
+    margin: auto;
+    padding-top: 10px;
+    color:#00153A;
+}
+
+/* services display starts here  */
+
+
+
+
+
+
+
+/* Why choose us section starts here*/
+
+
+.why-choose-us-content {
+    padding: 0 15px;
+}
+
+.why-choose-us-row {
+    margin-bottom: 50px;
+}
+
+.service-section {
+    padding: 0 1rem;
+}
+
+.service-card {
+    margin-bottom: 2rem;
+}
+
+.icon-container img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.service-card h4 {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.service-card .description {
+    text-align: center;
+    font-size:16px;
+    color: #333;
+    margin-top: 10px;
+    font-family:handyfontc;
+    word-spacing: 1.3px;
+}
+
+.why-choose-us-image img {
+    max-width: 100%;
+    border-radius:100% !important;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/* Why choose us section ends here*/
+
+
+
+
+
+
+/* how it works section starts here */
+
+.how-it-works-bg-img{
+    background-image:url(images/customerphoning.jpg);
+    background-repeat: no-repeat;
+    background-size:100% 95%;
+    background-position:center;
+    background-attachment:scroll; 
+    min-height:500px;
+    width:98%;
+    margin:auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.how-it-works-header h1{
+    font-size: 70px;
+    color:#fff;
+    margin-bottom:0px;
+}
+
+.how-it-works-guidance{
+    display:flex;
+    justify-content:space-evenly;
+    background:#fff;
+    width:90%;
+    margin: auto;
+    border-radius:5px;
+}
+
+.how-it-works-guidance-steps{
+    text-align:left;
+    padding:10px 3px;
+    margin-bottom:10px;
+    margin-top: 10px; 
+}
+
+.borderline{
+    background-color: #003366;
+    width:1px;
+}
+
+.borderlines{
+    border-top: #003366 solid 2px;
+    width:90%;
+    height:1px !important;
+}
+
+.how-it-works-guidance-steps .stop{
+    width:50px;
+    height:50px;
+    margin-bottom:5px;
+    border-radius:50%;
+    background: red;
+    display: inline-block !important;
+}
+
+.how-it-works-guidance-steps .ready{
+    width:50px;
+    height:50px;
+    margin-bottom:5px;
+    border-radius:50%;
+    display: inline-block !important;
+    background:yellow;
+}
+
+.how-it-works-guidance-steps .go{
+    width:50px;
+    height:50px;
+    margin-bottom:5px;
+    border-radius:50%;
+    display: inline-block !important;
+    background: green;
+}
+
+.how-it-works-guidance-steps .stop p{
+    font-size: 30px;
+    font-family: handyfontb;
+    color:#fff;
+    text-align: center;
+}
+
+.how-it-works-guidance-steps .ready p{
+    font-size: 30px;
+    font-family: handyfontb;
+    color:blue;
+    text-align: center;
+
+}
+
+.how-it-works-guidance-steps .go p{
+    font-size: 30px;
+    font-family: handyfontb;
+    color:#fff;
+    text-align: center;
+}
+
+.how-it-works-bg-img h2.headings{
+    color:#f5f7fa;
+    font-size:35px;
+    margin-bottom:10px;
+    margin-top:15px;
+}
+
+.how-it-works-guidance-steps h4{
+    color: #007bff;
+}
+
+.how-it-works-guidance-steps p{
+    font-size:18px;
+    color:#00153a;
+    display:flex;
+    justify-content: center;
+    margin-top:5px;
+    margin-bottom:5px;
+    align-items: center !important;
+}
+/* how it works section ends here */
+
+
+
+
+
+
+/* Review section on home page starts here */
+.review-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top:30px;
+}
+
+.makereview{
+    padding:10px 20px;
+}
+
+.review-great-grand-parent{
+    margin-top:5px;
+}
+
+.reviews-section-header h3{
+    font-size: 40px;
+    font-family: handyfonta;
+    margin: auto;
+    margin-top:5px;
+    margin-bottom: 10px;
+}
+
+.review-parent{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;    
+}
+
+.review-child{
+    background-color: #fff;
+    min-height:250px;
+    width: 250px;
+    margin-bottom: 15px;
+    box-shadow:3px 5px 4px #00153A ;
+    padding-left: 25px;
+    padding-top: 15px;
+    font-family: handyfontc;
+}
+.toggle-button{
+    color:#007bff !important;
+    margin-left:3px;
+}
+.filled-gold{
+    color:gold;
+    font-size: 25px;
+    margin-right:10px;
+    cursor: pointer;
+}
+
+.profile-box{
+    background-color: #003366;
+    border-radius: 50%;
+    height: 50px;
+    width:50px;
+    margin-right:5px;
+    float:left;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-box p{
+    color:#fff;
+    font-size:40px;
+    padding-top:20%;
+    text-align: center;
+}
+
+p.username{
+    margin-top:10px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+}
+
+.rating-box{
+    clear: both;
+}
+.rating-box img{
+    width:80px;
+    margin-bottom: 15px;
+}
+
+/* Review section on home page ends here */
+
+
+
+
+
+/* About section on home page starts here */
+
+
+.about-great-grand-parent{
+    min-height:600px;
+    margin-top:5px;
+}
+
+.about-section-header{
+    margin-top: 25px !important;
+}
+
+.about-grand-parent{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content:center;
+    display: flex;
+    min-height:430px;
+}
+
+.about-parent-1{
+    position: relative;
+    min-height:inherit;
+}
+
+.about-parent-1-child-1{
+    position: relative;
+    min-height:inherit;
+}
+
+.about-parent-1-child-1 .overlaybg{
+    position: absolute;
+    background-color:rgba(101, 113, 132, 0.8);
+    width:100%;
+    min-height:inherit;
+    top:0%;
+    left: 0%; 
+    z-index:1000;
+}
+
+.about-parent-1-child-1 img{
+    min-height:400px;
+}
+
+.about-parent-1-child-2 img{
+    width:250px;
+    display: block;
+    left:25%;
+    position: absolute;
+    top:20%; 
+    z-index:1000;
+}
+
+.about-parent-1-child-2b img{
+    width:180px !important;
+    top:17%;
+    left:36%
+}
+
+.about-parent-2-child h3{
+    text-transform: uppercase;
+    word-spacing: 3px; 
+    letter-spacing: 1px;
+    line-height: 33px;
+    margin-bottom:30px;
+}
+
+.about-parent-2-child p{
+    font-family: handyfontc;
+    font-size: 18px;
+    color:#00153A;
+}
+/* About section on home page  ends here */
+
+
+
+
+
+
+/* Footer section starts here  */
+.footer-great-grand-parent{
+    margin-top:100px;
+    padding:50px 10px;
+    background-color: #657184;
+    display: flex;
+    justify-content: space-around;
+    align-items:normal;
+}
+
+.footer-parent-1{
+    margin-bottom:20px;
+    text-align: center;
+}
+
+.footer-logo img{
+    width:120px;
+    display:inline-block; 
+}
+
+.footer-parent-1 span{
+    font-size:12px;
+    font-weight: bold;
+    font-family: handyfonta;
+    color:#fff;
+    display:block;
+}
+
+.footer-grand-parent-2 h3, .footer-grand-parent-3 h3, .footer-grand-parent-4 h3{
+    font-family:handyfonta;
+    font-weight: bold;
+    color:#fff;
+}
+
+ul.footer-nav li a{
+    font-size:18px !important;
+    font-family: handyfonta;
+    text-transform:capitalize;
+    color:#fff !important;
+}
+
+ul.footer-nav li a:hover{
+    color:#007bff !important;
+    transition:0.2s;
+    text-decoration: underline #fff;   
+}
+
+.footer-grand-parent-3 a.email{
+    display: block;
+    margin-bottom: 15px;
+}
+
+.footer-grand-parent-3 a.email span{
+    font-family: handyfontc;
+    color: #fff;
+}
+
+.footer-grand-parent-3 a.email:hover{
+    text-decoration: underline;
+    color: #fff !important;
+}
+
+.footer-grand-parent-3 a.email img{
+    width:30px;
+}
+
+.other-social-handles{
+    display: inline-block;
+}
+.other-social-handles a{
+    margin-right:30px;
+    display: inline-block;
+}
+.other-social-handles a img{
+    width:25px;
+}
+.footer-grand-parent-4 form input{
+    box-shadow:none;
+}
+
+/* Footer section ends here  */
+
+
+
+
+/* copyright section starts here  */
+.copyright-footer{
+    padding:20px 0px;
+    text-align: center;
+}
+/* copyright section ends here  */
+
+
+
+
+/* services search in services page starts here  */
+.search-parent{
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:20px 0px;
+}
+
+.filter-state{
+    display: flex;
+    align-items: center;
+}
+
+.search-parent form .search-input{
+    outline: #003366 1px solid;
+    border-radius:15px;
+}
+
+.search-parent form input.search-input:focus{
+    box-shadow: none !important;
+}
+
+.search-button{
+    cursor: pointer;
+    border:#003366 solid 1px;
+    color: #003366;
+    font-size: 18px;
+    border-radius:8px;
+} 
+.search-button:hover{
+    background-color:  #003366;
+    color: #fff;
+}
+/* services search in services page starts here  */
+
+
+
+
+
+/* contact page starts here */
+.contact-grand-parent{
+    padding:50px 50px 10px 50px;
+    display: flex;
+}
+
+.contact-parent-1{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.contact-parent-1 p{
+    font-size: 18px;
+    padding:3px 0px;
+    font-family: handyfontc;
+}
+
+.contact-parent-1 p a{
+    color: #007bff !important;
+    font-size: 18px;
+}
+
+.contact-parent-2{
+    background-color: #f5f7fa;
+    padding:30px 20px ;
+    border-radius: 5px;
+}
+
+.contact-parent-2 form div{
+    margin-bottom: 10px;
+}
+
+.contact-parent-2 form div input, textarea, select{
+    border-radius:0px !important;
+    border: #007bff solid 1px;
+}
+
+.contact-parent-2 form div input[placholder], textarea[placeholder]{
+    font-family:handyfontc !important;
+    font-size: 18px !important;
+}
+
+.contact-parent-2 form div .submit{
+    background-color: #007bff;
+    color:#fff;
+    font-size:20px;
+}
+
+/* contact page ends here */
+
+
+
+
+/* Handymen profiles page starts here */
+.listing-parent{
+    text-align: center;
+}
+
+.listing-parent p{
+    margin-bottom:5px !important;
+}
+
+.my-pic-background{
+    background-color:rgba(101, 113, 132, 0.1);
+    border-radius:10px 10px 0px 0px;
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+}
+
+.handy-profile{
+    margin:auto !important;
+    margin-top:-50px !important;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+}
+
+.star{
+    color:#007bff;
+    font-size: 25px;
+    margin-right:10px;
+    cursor: pointer;
+}
+.filled{
+    color:#007bff;
+    font-size: 25px;
+    margin-right:10px;
+    cursor: pointer;
+}
+
+a.see-more{
+    display: block;
+    margin-bottom:10px;
+    margin-top:0px !important;
+    display: inline-block;
+    background-color:#007bff;
+    color: #fff !important;
+    font-size:17px;
+    padding:5px 20px;
+}
+
+
+
+
+
+/* Handymen profiles page starts here */
+
+
+
+
+
+/* faqs section starts here  */
+.accordion-header-self{
+    margin-top:20px;
+    margin-bottom:20px;
+} 
+
+.accordion-item h2.accordion-header button{
+   font-family:handyfontc !important;
+   font-size:18px;
+   color:#007bff;
+   box-shadow: none !important;
+} 
+
+/* faqs section ends here  */
+
+
+
+
+
+
+/* profile page  starts here */
+.profile-parent{
+    background-color: #fff;
+    margin-top:40px;
+    border-radius:20px;
+    box-shadow:3px 2px 3px 2px #657184;
+}
+
+.profile-child-1{
+    background-color:rgba(101, 113, 132, 0.1);
+    border-radius:20px 20px 0px 0px;
+    min-height:100px;
+    display:flex;
+    justify-content:center;
+}
+
+.second-profile-div{
+    border-left:#657184 1px solid;
+    border-radius:20px 20px 0px 0px;
+    box-shadow: -2px 0 3px 1px #657184;
+}
+
+.profile-child-3{
+    background-color:rgba(101, 113, 132, 0.1);
+    border-radius:20px 20px 0px 0px;
+    min-height:100px;
+    text-align: center;
+    padding-top:15px;
+}
+
+.personalized{
+    text-align: center;
+    padding-bottom:30px !important;
+}
+
+.personalized textarea{
+    margin: auto;
+}
+
+.profile-child-4{
+    padding-left:5%;
+    
+}
+
+.profile-child-1 img{
+    display:inline-block;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    margin:auto !important;
+    margin-bottom:-50px !important;
+}
+
+.profile-child-2{
+    margin-top:65px;
+    margin-bottom:30px;
+    text-align: center;
+}
+
+.profile-child-2 h4{
+    text-transform: uppercase;
+}
+
+.profile-child-2 p{
+    font-size:18px;
+}
+.profile-child-2 a.contact-pro{
+    background-color:#007bff;
+    color: #fff !important;
+    display:inline-block;
+}
+.profile-child-2 a.contact-pro img{
+    width:20px;
+    display: inline-block;
+    margin-top:-10px;
+    margin-left: -50px !important;
+}
+
+.profile-child-2 a.contact-pro span{
+    display: inline-block;
+    font-size:20px;
+    color: #fff;
+    margin-bottom: 0px;
+    padding-bottom:0px;
+} 
+
+.review-styles .name{
+    margin-bottom:0px;
+    font-weight: bold;
+}
+
+.review-styles .date{
+    margin-top:0px;
+}
+
+/* profile page  ends  here */
+
+
+
+
+/* user dasboard template starts here */
+.user-dashboard-parent-a{
+    background-color: #657184;
+    height:500px;
+    position:sticky;
+    top:17% !important;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+.user-dashboard-child-1a{
+    background-color:#fff;
+    height:100px;
+    margin-top:3px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    padding-left:10%;
+}
+
+.user-dashboard-child-1a div.image-profile{
+    height:inherit;
+    width:28%;
+}
+
+.user-dashboard-child-1a div.image-profile img{
+    border-radius:50%;
+    width:80px;
+    height:80px;
+    margin-top:10px;
+}
+
+.user-dashboard-child-1a h6{
+    font-size:30px;
+    color:#657184;
+    margin-bottom: 0%;
+}
+
+.user-dashboard-child-1a p.online-presence{
+    display:block;
+    font-size:12px;
+    color:green;
+    margin-top: 0%;
+}
+
+.user-dashboard-child-2a,.user-dashboard-child-3a{
+    margin-left:13%;
+    padding-top:15px;
+}
+
+.user-dashboard-child-2a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-dashboard-child-2a a{
+    color:#fff !important;
+    font-size:22px;
+}
+
+.user-dashboard-child-2a a i, div i{
+    color:#fff !important;
+    font-size:20px;
+}
+
+.section-divider{
+    color:#fff !important;
+}
+
+.user-dashboard-child-3a ul{
+    padding-inline-start:0px !important;
+}
+
+.user-dashboard-child-3a ul li{
+    padding-top:15px;
+}
+
+.user-dashboard-child-3a ul li a{
+   color:#fff !important;
+   font-size:17px;
+}
+
+.user-dashboard-child-3a ul li i{
+    color:#fff !important;
+   font-size:15px;
+   padding-right:10px;
+}
+
+.user-dashboard-grand-parent .user-dashboard-parent-b{
+    min-height:600px;
+}
+
+.user-dashboard-child-1b h4{
+    font-size:30px;
+}
+
+.user-dashboard-child-1b p{
+    font-size:16px;
+    font-family:handyfontc;
+    color:#657184;
+}
+
+.minor-display-parent{
+    display:flex;
+    justify-content:space-around;
+    margin-top:20px
+}
+
+.user-dashboard-great-grand-child-2b{
+    height:200px;
+    width:100%;
+    border-radius:5px;
+}
+
+.minor-display{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    color:#fff !important;
+    margin-top:5%;
+    text-align: center;
+}
+
+.minor-display .child-1 i{
+    font-size:50px;
+}
+
+.minor-display .child-2 p{
+    font-size:22px;
+    color:#f5f7fa !important;
+}
+
+.child-2 p.record-counter{
+    font-size:30px;
+    padding: 0%;
+    margin-bottom: 0%;
+}
+
+.edited-to-suit-page{
+    margin-top:20px !important;
+}
+
+.user-dashboard-grand-child-3b {
+    margin-top:30px;
+}
+
+.user-dashboard-grand-child-3b p{
+    color: rgb(0, 0, 0);
+}
+
+.gray-text {
+    color: gray !important; 
+}
+
+
+.message{
+    font-weight: bold;
+    font-size:18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.hidden-content{
+    background-color: #f0f0f0;
+    padding-left:2%;
+    padding-top: 10px;
+}
+
+.hidden-content i{
+    color:rgb(0, 0, 0) !important;
+}
+
+/* user dasboard template starts here */
+
+
+
+
+
+
+ /* profile edit form starts here  */
+
+/* .profile-form{
+    margin-top: 45px;
+    border-radius: 15PX;
+    background-color: #fff;
+    padding:10px 15px;
+}
+.profile-form form div input, select, textarea, .select-me-profile{
+    border:#657184 1px solid;
+    border-radius:0px;;
+}
+.profile-form  form div input:hover, select:hover, textarea:hover, .select-me-profile:hover{
+    border:#657184 1px solid;
+}
+.profile-form  form div input:focus, select:focus, textarea:focus{
+    border:#657184 2px solid;
+}
+.profile-form  form div .userwarning{
+    font-size: 12px;
+    color:#003366 !important;
+    display:block;
+}
+.profile-form  form div label{
+    color:#657184;
+    font-size: 16px;
+    font-family: handyfontc;
+} */
+
+/* profile edit form ends here  */
+
+
+
+
+
+
+
+
+
+/* admin dasboard template */
+
+
+.main-admin-header{
+    position:sticky !important;
+    top:0px !important;
+    box-shadow:0px 2px 5px -3px black; 
+    z-index:1000000; 
+}
+
+.admin-logo-div{
+    background-color: #657184;
+}
+
+.admin-logo-div .logo-nav{
+    background-color:transparent!important;
+}
+
+.admin-logo-div .logo-nav-child{
+    display: flex !important;
+    justify-content:center;
+    align-items: center !important;
+    width:100%;
+} 
+
+.admin-logo-div .nav-brand-logo-box{
+    display:flex;
+    justify-content:end !important;
+}
+
+.admin-logo-div a.brand-logo{
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center !important;
+}
+
+.admin-logo-div a.brand-logo img{
+    width:60px;
+    display:block;
+    margin:auto;
+}
+
+.admin-logo-div a.brand-logo span{
+    font-size: 8px;
+    font-weight: bold;
+    font-family: handyfonta;
+    color:#fff;
+}
+
+.admin-logo-div a.brand-logo span.first{
+    font-size: 12px;
+    color:#fff;
+}
+
+.admin-logo-div .admin-profile-side-1{
+    padding-left:20px;
+    padding-right:20px;
+    display: flex;
+    justify-content: end;
+    width:30%;
+ }
+
+ .admin-logo-div .profile-dropdown{
+    width:30%;
+    border-left:solid 2px #007bff;
+    padding:10px;
+    border-top:#fff 1px solid;
+    border-bottom:#fff 1px solid;
+ }
+
+ .admin-logo-div .profile-dropdown-child ul li.first{
+    margin-left:15px;  
+}
+
+.admin-logo-div .profile-dropdown-child ul li.first span{
+    color: #003366;
+    font-family:handyfontb !important; 
+    font-size: 18px;
+}
+
+.admin-logo-div .profile-dropdown-child ul li a{
+    color:#007bff !important;
+}
+
+.admin-logo-div .profile-dropdown-child ul li a:hover{
+    background-color:rgba(0,0,0, 0.175);
+    transition:0.2s !important; 
+}
+
+.admin-dashboard-parent-a{
+    background-color: #657184;
+    height:500px;
+    position:sticky;
+    top:18% !important;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+.admin-dashboard-child-1a{
+    background-color:#fff;
+    height:100px;
+    margin-top:3px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    padding-left:10%;
+}
+.admin-dashboard-child-1a div.image-profile{
+    height:inherit;
+    width:28%;
+}
+.admin-dashboard-child-1a div.image-profile img{
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    margin-top:10px;
+}
+.admin-dashboard-child-1a h6{
+    font-size:20px;
+    color:#657184;
+    margin-bottom: 0%;
+}
+.admin-dashboard-child-1a p.online-presence{
+    display:block;
+    font-size:12px;
+    color:green;
+    margin-top: 0%;
+}
+.admin-dashboard-child-2a,.admin-dashboard-child-3a{
+    margin-left:5%;
+    padding-top:15px;
+}
+.admin-dashboard-child-2a{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-dashboard-child-2a a{
+    color:#fff !important;
+    font-size:22px;
+}
+.admin-dashboard-parent-a .section-divider{
+    color:#fff !important;
+}
+
+.admin-dashboard-child-3a ul li{
+    padding-top:15px;
+}
+
+.admin-dashboard-child-3a ul li a{
+   color:#fff !important;
+   font-size:17px;
+}
+
+.admin-dashboard-child-3a ul li i{
+    color:#fff !important;
+   font-size:15px;
+   padding-right:10px;
+}
+
+.admin-dashboard-parent-b{
+    min-height:1600px;
+}
+
+.add-services-modal{
+   z-index:1000000;
+
+}
+
+#show-form{
+    display:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  error handling pages section ends here */
+.error-template-parent{
+    background-color: #657184;
+    min-height:400px;
+    padding-top:20px;
+    display: flex;
+    align-items: center;
+}
+
+.styling-error-message{
+    color:#fff !important;
+    text-align: center;
+    width:50%;
+}
+
+.styling-error-message h3{
+    font-size:40px;
+    color:#fff !important;
+}
+.styling-error-message p{
+    font-size:20px;
+}
+.styling-error-message a{
+    color:#003366;
+    background-color: #fff;
+    padding:10px 20px;
+    font-size:20px;
+    display: inline-block;
+    margin-top: 12px;
+    border-radius:5px;
+}
+
+.error-image{
+    width:50%;
+}
+
+.error-image img{
+    width:400px;
+    display:inline-block;
+    margin-left:25%;
+}
+/* error handling pages section ends here */

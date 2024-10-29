@@ -1,0 +1,139 @@
+{% extends 'user/user_dashboard.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h1>Edit Profile</h1>
+        </div>
+        <div class="container signup-parent mt-0">
+            <div class="row">
+                <div class="col-12 ">
+                    {% with messages=get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        {% for cat, message in messages %}
+                            {% if cat == 'error' %}
+                                <div class="alert alert-danger text-center">{{ message }}</div>
+                            {% else %}
+                                <div class="alert alert-success text-center">{{ message }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="col-12 sign-up-resize">
+                    <form action="/handyman/submit/updated/profile/" method="POST" id="signup-form" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token()}}">
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 offset-md-1 col-12">
+                                <label for="user_firstname" class="col-sm-12 col-form-label">First Name</label>
+                                <div>
+                                    <input type="text" class="form-control" id="user_firstname" name="firstname" value="{{ user_online.user_firstname }}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 offset-md-1 col-12">
+                                <label for="user_lastname" class="col-sm-12 col-form-label">Last Name</label>
+                                <div>
+                                    <input type="text" class="form-control" id="user_lastname" name="lastname" value="{{ user_online.user_lastname }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_phoneno" class="col-sm-12 col-form-label">Phone No</label>
+                                <div>
+                                    <input type="text" class="form-control" id="user_phoneno" name="phone_no" value="{{ user_online.user_phone }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_email" class="col-sm-12 col-form-label">Email</label>
+                                <div>
+                                    <input type="email" class="form-control" id="user_email" name="email" value="{{ user_online.user_email }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_businessname" class="col-sm-12 col-form-label">Business Name</label>
+                                <div>
+                                    <input type="text" class="form-control" id="user_businessname" name="businessname" value="{{ user_online.user_business_name }}">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_address" class="col-sm-12 col-form-label">Address</label>
+                                <div>
+                                    <input type="text" class="form-control" id="user_address" name="address" value="{{ user_online.user_address }}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_state_profile" class="col-sm-6 col-form-label">State</label>
+                                <div>
+                                    <select name="state" class="form-select" id="user_state_profile">
+                                        <option selected>Please Select</option>
+                                        {% for state in states %}
+                                            <option value="{{ state.state_id }}" {% if user_online.user_state_id == state.state_id %} selected {% endif %}>{{ state.state_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_lga_profile" class="col-sm-12 col-form-label">LGA</label>
+                                <div>
+                                    <select name="lga" class="form-select" id="user_lga_profile">
+                                        {% if user_online.lga %}
+                                            <option value="{{ user_online.lga.lga_id }}">{{ user_online.lga.lga_name }}</option>
+                                        {% else %}
+                                            <option value="">Select LGA</option>
+                                        {% endif %}
+                                        <!-- LGA options will be populated here -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-4 offset-md-1">
+                                <label for="user_biography" class="col-sm-12 col-form-label">Biography</label>
+                                <div>
+                                    <textarea class="form-control" id="user_biography" name="biography" rows="5">{{ user_online.user_bio }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 offset-md-1">
+                                <label for="profile-pic" class="col-sm-12 col-form-label">Profile Picture</label>
+                                <div>
+                                    <input type="file" class="form-control" name="profile_pic" id="profile-pic">
+                                </div>
+                            </div>
+
+                            <div class="col-10 offset-md-1">
+                                <label for="services" class="col-sm-6 col-form-label">Services Rendered</label>
+                                {% for service in all_services %}
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" name="services" value="{{ service.handyservice_id }}" {% if service.handyservice_id in selected_services %} checked {% endif %}>
+                                        <label class="form-check-label">{{ service.handyservice_name }}</label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-10 offset-2 m-auto text-center">
+                                <button type="submit" class="btn btn-primary col-8" id="submit-button">Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,88 @@
+{% include 'user/header.html' %}
+
+
+            <!-- contact section -->
+            <div class="row">
+                <div class="col-12 all-banner-page-img-2 media-contact-adjust">
+                    <div class="col-12  section-header services-section-header-1 header-adjust">
+                        <h1 class="special-header">
+                            Contact us
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories = True)%}
+                {%if messages%}
+                  {% for cat,message in messages %}
+                        {% if cat == 'error'%}
+                          <div class="alert alert-danger text-center">
+                            <h3>{{message}}</h3>
+                          </div>
+                        {% else %}
+                          <div class="alert alert-success text-center">
+                            <h3>{{message}}</h3>
+                          </div>  
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+               
+            <div class="row contact-grand-parent">
+                <div class="col-md-5 contact-parent-1">
+                    <h3>You can reach us directly via:</h3>
+                    <p>Contact: +234 000 0000 000</p>
+                    <p>
+                      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oayomideg@gmail.com&su=Your Subject Here&body=Your Message Here" target="_blank">
+                        Email us via Gmail</a>
+                    </p>  
+                    <p>Whatsapp Chat: +234 000 0000 000</p>
+                </div>
+                <div class="col-md-7 contact-parent-2">
+                    <form action="{{url_for('contact_us')}}" method="POST">
+                        {{form.csrf_token}}
+
+                          <div>
+                            {{form.customername(class="form-control form-control-lg", id="cust_name",placeholder="Fullname")}}
+                            {% for error in form.customername.errors %}
+                              <span>{{error}}</span>
+                            {% endfor %}
+                          </div>
+                          <div>
+                            {{form.customerphone(class="form-control form-control-lg", id="cust_phone",placeholder="Phone No")}}
+                            {% for error in form.customerphone.errors %}
+                              <span>{{error}}</span>
+                            {% endfor %}
+                          </div>
+                          <div>
+                            {{form.customeremail(class="form-control form-control-lg", id="cust_email",placeholder="Email")}}
+                            {% for error in form.customeremail.errors %}
+                              <span>{{error}}</span>
+                            {% endfor %}
+                          </div>
+                          <div >
+                            {{form.customermessage(class="form-control", id="cust_message",placeholder="Additional Information",rows="5")}}
+                            {% for error in form.customermessage.errors %}
+                              <span>{{error}}</span>
+                            {% endfor %}
+                          </div>
+                          <div class="mb-3 row">
+                            {{form.besttime.label(class="col-md-3 col-form-label")}}
+                            {{form.besttime(class="col-md-6 col-form-label")}}
+                            {% for error in form.besttime.errors %}
+                              <span>{{error}}</span>
+                            {% endfor %}
+                          </div>
+                          <div class="col-md-10 offset-1">
+                            {{form.submit(class="btn submit col-12")}}
+                          </div> 
+                        </form>
+                </div>
+            </div>
+                
+            
+           
+{% include 'user/footer.html' %}
+
+      

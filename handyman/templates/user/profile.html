@@ -1,0 +1,109 @@
+{% include 'user/header.html' %}
+
+ <!--profile section features  -->
+    <div class="container">
+        <div class="row profile-parent">
+
+            <div class="col-md-8 profile-media-resize">
+            <div class="col-md-12 profile-child-1">
+                {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                    <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image">
+                {% else%}
+                <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image">
+                {% endif %}
+            </div>
+            <div class="col-md-12 profile-child-2">
+                <h4>FULLNAME/BUSSINESS NAME</h4>
+                {% if user_online.user_business_name == None or user_online.user_business_name == ''%}
+                    <p>None (update your profile)</p>
+                {% else%}
+                    <p>{{user_online.user_business_name }}</p>
+                 {% endif %}
+                
+                <h4>Name</h4>
+                    <p>{{user_online.user_firstname}} {{user_online.user_lastname}}</p>
+
+                <div>
+                    <h4>Contact</h4>
+                    <p>Phone: {{user_online.user_phone}}</p>
+                    <p>Email: <a>{{user_online.user_email}}</a></p>
+                </div>
+                <div>
+                    <h4>Location</h4>
+                    <p>{{user_online.user_address}}, living in {{user_online.state.state_name}} state, {{user_online.lga.lga_name}} local government area.</p>
+                </div>
+                <div class=>
+                    <h4>Biography</h4>
+                    {% if user_online.user_bio == None or user_online.user_bio == ''%}
+                    <p>None (update your profile)</p>
+                    {% else%}
+                    <p>{{user_online.user_bio }}</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <h4>Specialization</h4>
+                    {% if user_services|length == 0 %}
+                    <p>None (Add services)</p>
+                    {% else %}
+                    <ul>
+                        {% for service in user_services %}
+                            <li>{{ service.handy_service.handyservice_name}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+                </div>
+               
+
+                <!-- <div>
+                    <a href="#" class="btn contact-pro col-5">
+                                     <img src="{{url_for('static',filename='images/call.png')}}" alt="call-icon">
+                                     <span>Contact me now</span>
+                                    </a>
+                </div> -->
+            </div>
+            </div>
+
+            <div class="col-md-4 second-profile-div profile-media-resize">
+                <div class="col-md-12 profile-child-3">
+                    <h4> Most Recent Reviews and Ratings</h4>
+                </div>
+                <div class="col-md-12 profile-child-4" id="viewreviews">
+                    {% if reviews %}
+                        {% for review in reviews %}
+
+                            <div class="review-styles mt-3">
+                                <p class="name">{{review.from_user.user_firstname}}</p>
+                                    <strong>Rating: 
+                                        {% for i in range(review.review_rating) %}
+                                            <span class="filled-gold">★</span>
+                                        {% endfor %}
+                                    </strong>
+                                
+                                
+                                    {% if review.review_content == None%}
+                                        <p></p>
+                                    {% else %}
+                                    <p class="content">{{review.review_content}}</p>
+                                        
+                                    {% endif %}
+                                <small>Reviewed on: {{ review.review_updated_on.strftime('%Y-%m-%d %H:%M') }}</small>
+
+                            </div>
+                            <hr>
+                            
+                        {% endfor %}
+                    {% else %}
+                        <p>No review yet</p>
+                    {% endif %}
+
+                </div>
+            </div>
+            
+        </div>
+        </div>
+    </div>
+
+
+
+{% include 'user/footer.html' %}

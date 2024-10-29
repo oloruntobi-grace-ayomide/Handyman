@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <meta name="description" content="Connect with skilled handymen in your area. Experience hassle-free service from professionals who care about your home and your needs."/>
+    <meta name="keywords" content="local handyman services, expert handymen near me, professional handyman solutions, reliable handymen in Lagos"/>
+    <meta name="author" content="Oloruntobi Grace"/>
+    <meta property="og:title" content="Find Trusted Handyman Services"/>
+    <meta property="og:description" content="We bring together homeowners and experienced handymen, ensuring quality workmanship and peace of mind. Your home, cared for by the best."/>
+    <meta property="og:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+    <meta property="og:url" content="{{url_for('home')}}"/>
+    <meta name="twitter:title" content="Reliable Handyman Services"/>
+    <meta name="twitter:description" content="Connecting you with trusted handymen who bring skill, care, and reliability to every job. Your home deserves the best."/>
+    <meta name="twitter:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+    <meta name="twitter:url" content="{{url_for('home')}}"/>
+    <meta name="locale" content="en-NG"/>
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fa/css/all.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='media.css')}}">
+        <title>My Handyman NG</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{url_for('static',filename='images/thefavs/apple-icon-57x57.png')}}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{url_for('static',filename='images/thefavs/apple-icon-60x60.png')}}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='images/thefavs/apple-icon-72x72.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{url_for('static',filename='images/thefavs/apple-icon-76x76.png')}}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='images/thefavs/apple-icon-114x114.png')}}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{url_for('static',filename='images/thefavs/apple-icon-120x120.png')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='images/thefavs/apple-icon-144x144.png')}}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{url_for('static',filename='images/thefavs/apple-icon-152x152.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename='images/thefavs/apple-icon-180x180.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{url_for('static',filename='images/thefavs/android-icon-192x192.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename='images/thefavs/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static',filename='images/thefavs/favicon-96x96.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='images/thefavs/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static',filename='images/thefavs/manifest.json')}}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{url_for('static',filename='images/thefavs/ms-icon-144x144.png')}}">
+        <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <!-- Brand Logo Search bar section -->
+                <div class="row main-admin-header">
+                    <div class="col-12 admin-logo-div">
+                        <nav class="navbar bg-body-tertiary logo-nav">
+                            <div class="logo-nav-child row">
+                                <div class=" col nav-brand-logo-box">
+                                        <a class="navbar-brand brand-logo" href="{{url_for('home')}}">
+                                        <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                                        <span class="first">My Handyman</span>
+                                        <span>Residential and Commercial services</span>
+                                        </a>
+                                </div>
+
+                                {% if session.get('admin_id') != None %}
+                                <div class="col admin-profile-side-1">
+                                    <div class="dropdown profile-dropdown" >
+                                            <a class="dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="{{url_for('static',filename='images/user.png')}}" alt="user image" width="30px">Hi {{admin_online.admin_username}}
+                                            </a>
+                                            <div class="profile-dropdown-child">
+                                            
+                                            <ul class="dropdown-menu">
+                                                <li class="first">
+                                                    <img src="{{url_for('static',filename='images/user.png')}}"alt="user image" style="width:30px !important; display: inline-block;">
+                                                    <span style="display: inline-block;">{{admin_online.admin_username}}</span>
+                                                </li>
+                                                <hr>
+                                                <li><a class="dropdown-item" href="{{url_for('admin_home')}}">Dashboard</a></li>
+
+                                                <li><a class="dropdown-item" href="{{url_for('admin_log_out')}}">Log out</a></li> 
+                                            </ul>
+                                            </div> 
+                                    </div>     
+                                </div>
+                                {% endif %}
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+
+               
+
+
+                <!-- Dasboard template -->
+                
+                <div class="row admin-dashboard-grand-parent">
+                    {% if session.get('admin_id') != None %}
+
+                    <div class="col-md-2 d-md-block d-none admin-dashboard-parent-a">
+                        <div class="admin-dashboard-child-1a">
+                            <div class="image-profile">
+                                <img src="/static/images/user.png" alt="">
+                            </div>
+                            <div>
+                                <h6>Admin {{admin_online.admin_username}}</h6>
+                                <p class="online-presence">online</p>
+                            </div>               
+                        </div>
+                        <div class="admin-dashboard-child-2a">
+                            <a href="{{url_for('admin_home')}}">
+                            <i class="fa fa-dashboard"></i>
+                            Dasboard
+                            </a>
+                            <div>
+                              <i class="fa-regular fa-bell">
+                                <span class="badge">
+                                </span>
+                              </i>
+                            </div>
+                        </div>
+                        <hr class="section-divider">
+                        <div class="admin-dashboard-child-3a">
+                            <ul>
+                                <li>
+                                    <a href="{{url_for('view_profiles')}}">
+                                        <i class="fa-regular fa-eye"></i>
+                                        View Profiles
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('handle_services')}}">
+                                        <i class="fa fa-edit"></i>
+                                        Services
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('user_reviews')}}">
+                                        <i class="fa-solid fa-star"></i>
+                                        See users reviews
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('app_reviews')}}">
+                                        <i class="fa-solid fa-star"></i>
+                                        See app reviews
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-cog"></i>
+                                        settings
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('admin_log_out')}}">
+                                        <i class="fa fa-power-off"></i>
+                                      Logout
+                                    </a>
+                                  </li>
+                            </ul>
+                        </div>
+                      
+                    </div>
+
+                    {% endif %}
+                    
+                        {% block content %}
+                        <div class="col-md-10 admin-dashboard-parent-b">
+                        {% with messages=get_flashed_messages(with_categories=True)%}
+                        {%if messages%}
+                          {% for cat,message in messages %}
+                                {% if cat=='error'%}
+                                  <div class="alert alert-danger text-center">{{message}}</div>
+                                {% else %}
+                                  <div class="alert alert-success text-center">{{message}}</div>  
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+
+
+                        <div class="container-fluid user-dashboard-body">
+                          <div class="row user-dashboard-child-1b">
+                              <div class="col-12 user-dashboard-grand-child-2b">
+                                  <div class="row minor-display-parent">
+                                      <div class="col-md-6 col-lg-3 user-dashboard-great-grand-child-2b"  style="background-color:orangered;">
+                                          <div class="minor-display">
+                                              <div class="child-1">
+                                                <i class="fa-solid fa-envelope"></i>
+                                              </div>
+                                              <div class="child-2">
+                                                 <p class="record-counter">20</p>
+                                                 <p>Emails</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 col-lg-3 user-dashboard-great-grand-child-2b"  style="background-color:blue;">
+                                          <div class="minor-display">
+                                              <div class="child-1">
+                                                  <i class="fa-solid fa-star" ></i>
+                                              </div>
+                                              <div class="child-2">
+                                                 <p class="record-counter">20</p>
+                                                 <p>Recent reviews</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 col-lg-3 user-dashboard-great-grand-child-2b"  style="background-color:orangered;">
+                                          <div class="minor-display">
+                                              <div class="child-1">
+                                                  <i class="fa-regular fa-eye"></i>
+                                              </div>
+                                              <div class="child-2">
+                                                 <p class="record-counter">20</p>
+                                                 <p>Reported Reviews</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                          </div>
+                      </div>
+                      
+                        </div>
+                        {% endblock content%}
+                    
+                </div>
+
+
+
+    
+
+                <!-- copyright section -->
+                <div class="row">
+                    <div class="col copyright-footer">
+                        <p>&copy; 2024 MY HANDYMAN.NG  <a href=""> | PRIVACY POLICY | </a>  ALL RIGHT RESERVED.</p>
+                    </div>
+                </div>
+      
+
+            </div>
+        </div>
+    </div> 
+
+<script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+<script src="{{url_for('static',filename='jquery-3.7.1.min.js')}}"></script>
+<script src="{{url_for('static',filename='jquery.js')}}"></script>
+<script>
+    $(document).ready(function(){
+
+        $('#user_state').change(function(){
+        var stateid=$(this).val()
+        $('#user_lga').load('/handyman/lga/loads/',"id="+stateid)
+         })
+
+
+        // view-profiles page for admin starts here
+
+        $('.fullname-details').mouseover(function(){
+            $(this).find('.details-info').show()
+         });
+        $('.fullname-details').mouseleave(function(){
+            $(this).find('.details-info').hide()
+        });
+        
+        
+        $('.modify-user-status').mouseover(function(){
+            $(this).find('.status-info').show()
+         });
+        $('.modify-user-status').mouseleave(function(){
+            $(this).find('.status-info').hide()
+        });
+
+
+        $('.status-change').click(function() {
+            var statusMode = $(this).text();
+            var user_id = $(this).parent().parent().parent().siblings('.user_id').text();
+            $.ajax({
+            url: '/handyman/activate/disactivate/account/',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                "statusmode": statusMode,  
+                "user_id": user_id, 
+                csrf_token: "{{ csrf_token() }}" 
+            },
+            success: function(resp) {
+                location.reload()
+               
+            },
+            error: function(err) {
+                console.log(err);
+            }
+            });
+        });
+        
+        $('.delete-me').click(function(){
+            var usertodelete=$(this).find('.del-id').text()
+            $.ajax({
+                url:'/admin/handyman/delete/acount/',
+                type:'POST',
+                dataType:'text',
+                data:{
+                    data2send: usertodelete,
+                    csrf_token:"{{ csrf_token() }}"
+                },
+                success:function(resp) {
+                    alert('Account has been deleted');
+                    location.reload();
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            })
+        })
+        
+        $('#sorted-by').change(function() {
+        var selectedSort = $(this).val();
+        var selectedLimits = $('#limits').val(); 
+        window.location.href = '?sortedby=' + selectedSort + '&limits=' + selectedLimits;  
+        });
+
+        $('#limits').change(function(){
+        var selectedLimits = $(this).val(); 
+        var selectedSort = $('#sorted-by').val(); 
+        window.location.href = '?limits=' + selectedLimits + '&sortedby=' + selectedSort;  
+        });
+
+        $('#search-user').click(function(){
+            var search= $('#search-user-input').val();
+            var selectedLimits = $('#limits').val(); 
+            var selectedSort = $('#sorted-by').val();
+
+            window.location.href = '?search='+ search +'&limits=' + selectedLimits + '&sortedby=' + selectedSort; 
+
+        })
+
+        // view-profiles page for admin ends here
+
+
+
+        //  forms in view service in admin dashboard starts here   and other functionalities
+
+        $('.edit-service').on('click', function() {
+
+        var serviceId = $(this).data('id');
+        var serviceName = $(this).data('name');
+        var serviceDescription = $(this).data('description');
+        var serviceIconAlt = $(this).data('iconalt');
+        var serviceIcon=$(this).data('icon')
+        var servicePicture = $(this).data('picture');
+
+
+        $('#service-id').val(serviceId);
+        $('#service-name').val(serviceName);
+        $('#service-description').val(serviceDescription);
+        $('#service-icon-alt').val(serviceIconAlt);
+
+        if (serviceIcon) {
+            $('#service-icon-preview').attr('src', serviceIcon).show();
+        } else {
+            $('#service-icon-preview').hide();
+        };
+
+        if (servicePicture) {
+            $('#service-picture-preview').attr('src', servicePicture).show();
+        } else {
+            $('#service-picture-preview').hide();
+        };
+        });
+        
+         $('#editServiceForm').on('submit', function(event) {
+        event.preventDefault(); 
+        var myform=$('#editServiceForm')[0]
+        var formData = new FormData(myform);
+        formData.append('csrf_token','{{csrf_token()}}')
+        $.ajax({
+            url: '/admin/handyman/edit/default/service/', 
+            type: 'POST',
+            data: formData,
+            cache:false,
+            contentType: false, 
+            processData: false, 
+            success: function(response) {
+                if (response.success) {
+                    alert('Service updated successfully!');
+                    $('#editServiceModal').modal('hide');
+                    location.reload();
+                } else {
+                    alert(response.message || 'An error occurred while updating the service.');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                alert('An error occurred: ' + error);
+            }
+        });
+    });
+ 
+
+        $('.delete-service').click(function(){
+            var servicetodelete=$(this).find('.delete-id').text()
+            console.log(servicetodelete)
+            $.ajax({
+                url:'/admin/handyman/delete/service/',
+                type:'POST',
+                dataType:'text',
+                data:{
+                    data2send:servicetodelete,
+                    csrf_token:"{{csrf_token()}}"
+                },
+                success:function(resp) {
+                    location.reload()
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            })
+        })
+
+        $('#sort-services').change(function() {
+        var selectedSort = $(this).val();
+        var selectedLimits = $('#limit-services').val();
+        window.location.href = '?sortby=' + selectedSort + '&limit=' + selectedLimits;  
+        });
+
+        $('#limit-services').change(function(){
+        var selectedLimits = $(this).val(); 
+        var selectedSort = $('#sort-services').val(); 
+        window.location.href = '?limit=' + selectedLimits + '&sortby=' + selectedSort;  
+        });
+
+        $('#search-service').click(function(){
+            var search = $('#search-service-input').val();
+            var selectedLimits = $('#limit-services').val(); 
+            var selectedSort = $('#sort-services').val();
+
+            window.location.href = '?search='+ search +'&limit=' + selectedLimits + '&sortby=' + selectedSort; 
+
+        })
+
+         //  forms in view service in admin dashboard ends here   
+
+
+
+        //  functionalities for users reviews on admin dashboard starts here
+
+        $('.fullname-info').mouseover(function(){
+            $(this).find('.details-info').show()
+         });
+        $('.fullname-info').mouseleave(function(){
+            $(this).find('.details-info').hide()
+        });
+        
+
+        $('.modify-user-review-status').mouseover(function(){
+            $(this).find('.status-info').show()
+         });
+        $('.modify-user-review-status').mouseleave(function(){
+            $(this).find('.status-info').hide()
+        });
+        
+
+        $('.change-status').click(function() {
+            var statusMode = $(this).text();
+            var review_id = $(this).parent().parent().parent().siblings('.review_id').text();
+            console.log(review_id)
+            $.ajax({
+            url: '/handyman/activate/disactivate/reviews/',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                "statusmode": statusMode,  
+                "reviewid": review_id, 
+                csrf_token: "{{csrf_token()}}" 
+            },
+            success: function(resp) {
+                location.reload()
+               
+            },
+            error: function(err) {
+                console.log(err);
+            }
+            });
+        });
+
+
+        $('.delete-user-review').click(function(){
+            var reviewtodelete=$(this).find('.delete-review-id').text()
+
+            $.ajax({
+                url:'/admin/handyman/delete/review/',
+                type:'POST',
+                dataType:'text',
+                data:{
+                    data2send:reviewtodelete,
+                    csrf_token:"{{csrf_token()}}"
+                },
+                success:function(resp) {
+                    alert('Respond: The review has been deleted successfully')
+                    location.reload()
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            })
+        });
+       
+        $('#sort-reviews').change(function() {
+        var selectedSort = $(this).val();
+        var selectedLimits = $('#limit-reviews').val();
+        window.location.href = '?sortby=' + selectedSort + '&limit=' + selectedLimits;  
+        });
+
+        $('#limit-reviews').change(function(){
+        var selectedLimits = $(this).val(); 
+        var selectedSort = $('#sort-reviews').val(); 
+        window.location.href = '?limit=' + selectedLimits + '&sortby=' + selectedSort;  
+        });
+
+        $('#search-review').click(function(){
+            var search = $('#search-review-input').val();
+            var selectedLimits = $('#limit-reviews').val(); 
+            var selectedSort = $('#sort-reviews').val();
+
+            window.location.href = '?search='+ search +'&limit=' + selectedLimits + '&sortby=' + selectedSort; 
+
+        })
+        
+        //  functionalities for users reviews on admin dashboard ends here
+
+
+
+         //  functionalities for app reviews on admin dashboard starts here
+         
+
+        $('.modify-app-review-status').mouseover(function(){
+            $(this).find('.status-info').show()
+         });
+        $('.modify-app-review-status').mouseleave(function(){
+            $(this).find('.status-info').hide()
+        });
+        
+        $('.change-app-status').click(function() {
+            var statusMode = $(this).text();
+            var review_id = $(this).parent().parent().parent().siblings('.review_id').text();
+            console.log(review_id)
+            $.ajax({
+            url: '/handyman/activate/disactivate/app/reviews/',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                "statusmode": statusMode,  
+                "reviewid": review_id, 
+                csrf_token: "{{csrf_token()}}" 
+            },
+            success: function(resp) {
+                location.reload()
+              
+            },
+            error: function(err) {
+                console.log(err);
+            }
+            });
+        });
+
+        $('.delete-app-review').click(function(){
+            var reviewtodelete=$(this).find('.delete-review-id').text()
+            console.log(reviewtodelete)
+            $.ajax({
+                url:'/admin/handyman/delete/app/review/',
+                type:'POST',
+                dataType:'text',
+                data:{
+                    data2send:reviewtodelete,
+                    csrf_token:"{{csrf_token()}}"
+                },
+                success:function(resp) {
+                    alert('Respond'+resp)
+                    location.reload()
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+
+            })
+        })
+
+
+        $('#sort-review-app').change(function() {
+            var selectedSort = $(this).val();
+            var selectedLimits = $('#limit-app-reviews').val();
+            window.location.href = '?sortby=' + selectedSort + '&limit=' + selectedLimits;  
+        });
+
+        $('#limit-app-reviews').change(function(){
+            var selectedLimits = $(this).val(); 
+            var selectedSort = $('#sort-app-reviews').val(); 
+            window.location.href = '?limit=' + selectedLimits + '&sortby=' + selectedSort;  
+        });
+
+        $('#search-app-review').click(function(){
+            console.log('loogs')
+            var search = $('#search-app-review-input').val();
+            var selectedLimits = $('#limit-app-reviews').val(); 
+            var selectedSort = $('#sort-app-reviews').val();
+
+            window.location.href = '?search='+ search +'&limit=' + selectedLimits + '&sortby=' + selectedSort; 
+
+        })
+        
+      
+    //  functionalities for app reviews on admin dashboard ends here
+
+
+       
+   
+
+    })
+</script>
+
+
+
+</body>
+</html>

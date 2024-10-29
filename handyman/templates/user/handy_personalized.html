@@ -1,0 +1,148 @@
+{% include 'user/header.html' %}
+
+ <!--profile section features  -->
+    <div class="container">
+        <div class="row">
+            {% with messages = get_flashed_messages(with_categories = True)%}
+                {%if messages%}
+                  {% for cat,message in messages %}
+                        {% if cat == 'error'%}
+                          <div class="alert alert-danger text-center">
+                            <h3>{{message}}</h3></div>
+                        {% else %}
+                          <div class="alert alert-success text-center">
+                            <h3>{{message}}</h3>
+                          </div>  
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="col-12">
+                <a href="{{url_for('handymanpage')}}" role="button" class="btn btn-primary">Go back to handyman page</a>
+            </div>
+        </div>
+
+        <div class="row profile-parent">
+            <div class="col-8">
+            <div class="col-12 profile-child-1">
+                {% if handyman.user_dp == None or handyman.user_dp == '' %}
+                    <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image">
+                {% else%}
+                <img src="/static/users_images/{{handyman.user_dp}}" alt="user-image">
+                {% endif %}
+            </div>
+            <div class="col-12 profile-child-2">
+                <h4>FULLNAME/BUSSINESS NAME</h4>
+                {% if handyman.user_business_name == None or handyman.user_business_name == ''%}
+                    <p>{{handyman.user_firstname}} {{handyman.user_lastname}} Business</p>
+                {% else%}
+                    <p>{{handyman.user_business_name }}</p>
+                 {% endif %}
+                
+                <h4>Name</h4>
+                    <p>{{handyman.user_firstname}} {{handyman.user_lastname}}</p>
+
+                <div>
+                    <h4>Contact</h4>
+                    <p>Phone: {{handyman.user_phone}}</p>
+                    <p>Email: <a  href="https://mail.google.com/mail/?view=cm&fs=1&to={{ handyman.user_email }}&su=Your Subject Here&body=Your Message Here" target="_blank">{{handyman.user_email}}</a></p>
+                </div>
+                <div>
+                    <h4>Location</h4>
+                    <p>{{handyman.user_address}}, living in {{handyman.state.state_name}} state, {{handyman.lga.lga_name}} local government area.</p>
+                </div>
+                <div class=>
+                    <h4>Biography</h4>
+                    {% if handyman.user_bio == None or handyman.user_bio == ''%}
+                    <p>None (update your profile)</p>
+                    {% else%}
+                    <p>{{handyman.user_bio }}</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <h4>Specialization</h4>
+                    {% if services_provided|length == 0 %}
+                    <p>None (Add services)</p>
+                    {% else %}
+                    <ul>
+                        {% for service in services_provided %}
+                            <li>{{ service.handy_service.handyservice_name}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    
+                </div>
+                
+                
+            </div>
+            </div>
+
+            <div class="col-4 second-profile-div">
+                <div class="col-md-12 profile-child-3">
+                    <h4> Most Recent Reviews and Ratings</h4>
+                    <div class="personalized">
+                        <a role="button" class="btn btn-warning btn-sm makereview">Leave a review</a><br><br>
+
+                        <form action="/handyman/professionals/review/" method="POST" style="display:none;" class="reviewshowform">
+                            <label class="d-block">Rating:</label>
+                            <div class="rating">
+                              <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                                <input type="hidden" name="handyman-id" value="{{handyman.user_id}}">
+                                <span data-value="1" class="star">☆</span>
+                                <span data-value="2" class="star">☆</span>
+                                <span data-value="3" class="star">☆</span>
+                                <span data-value="4" class="star">☆</span>
+                                <span data-value="5" class="star">☆</span>
+                                <input type='hidden' name="rating"  id="totalrating">
+                            </div>
+                    
+                            <label for="comment" class="d-block">Your Comment:</label>
+                            <div>
+                                <textarea id="comment" name="comment" rows="4" placeholder="Write your review here..."></textarea>
+                            </div>
+                           
+                            
+                            <button type="submit" class="btn btn-success">Submit Review</button>
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="col-md-12 profile-child-4">
+                    {% if reviews %}
+                            {% for review in reviews %}
+
+                                <div class="review-styles mt-3">
+                                    <p class="name">{{review.from_user.user_firstname}}</p>
+                                        <strong>Rating: 
+                                            {% for i in range(review.review_rating) %}
+                                                <span class="filled-gold">★</span>
+                                            {% endfor %}
+                                        </strong>
+                                   
+                                    
+                                        {% if review.review_content == None%}
+                                            <p></p>
+                                        {% else %}
+                                        <p class="content">{{ review.review_content }}</p>
+                                            
+                                        {% endif %}
+                                    <small>Reviewed on: {{ review.review_updated_on }}</small>
+
+                                </div>
+                                <hr>
+                            {% endfor %}
+                    {% else %}
+                                <p>No review yet</p>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            
+        </div>
+        </div>
+    </div>
+
+
+
+{% include 'user/footer.html' %}

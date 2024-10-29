@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <meta name="description" content="Connect with skilled handymen in your area. Experience hassle-free service from professionals who care about your home and your needs."/>
+        <meta name="keywords" content="local handyman services, expert handymen near me, professional handyman solutions, reliable handymen in Lagos"/>
+        <meta name="author" content="Oloruntobi Grace"/>
+        <meta property="og:title" content="Find Trusted Handyman Services"/>
+        <meta property="og:description" content="We bring together homeowners and experienced handymen, ensuring quality workmanship and peace of mind. Your home, cared for by the best."/>
+        <meta property="og:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta property="og:url" content="{{url_for('home')}}"/>
+        <meta name="twitter:title" content="Reliable Handyman Services"/>
+        <meta name="twitter:description" content="Connecting you with trusted handymen who bring skill, care, and reliability to every job. Your home deserves the best."/>
+        <meta name="twitter:image" content="{{url_for('static', filename='images/fav.png')}}"/>
+        <meta name="twitter:url" content="{{url_for('home')}}"/>
+        <meta name="locale" content="en-NG"/>
+
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fa/css/all.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='media.css')}}">
+        <title>My Handyman NG</title>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{url_for('static',filename='images/thefavs/apple-icon-57x57.png')}}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{url_for('static',filename='images/thefavs/apple-icon-60x60.png')}}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{url_for('static',filename='images/thefavs/apple-icon-72x72.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{url_for('static',filename='images/thefavs/apple-icon-76x76.png')}}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{url_for('static',filename='images/thefavs/apple-icon-114x114.png')}}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{url_for('static',filename='images/thefavs/apple-icon-120x120.png')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{url_for('static',filename='images/thefavs/apple-icon-144x144.png')}}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{url_for('static',filename='images/thefavs/apple-icon-152x152.png')}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static',filename='images/thefavs/apple-icon-180x180.png')}}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{url_for('static',filename='images/thefavs/android-icon-192x192.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{url_for('static',filename='images/thefavs/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{url_for('static',filename='images/thefavs/favicon-96x96.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{url_for('static',filename='images/thefavs/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{url_for('static',filename='images/thefavs/manifest.json')}}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{url_for('static',filename='images/thefavs/ms-icon-144x144.png')}}">
+        <meta name="theme-color" content="#ffffff">
+        
+        
+</head>
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <!-- Brand Logo Search bar section starts here -->
+                <div class="row">
+                    <div class="col-12 logo-div">
+                        <nav class="navbar bg-body-tertiary logo-nav">
+                            <div class="logo-nav-child">
+                                <div class="nav-brand-logo-box">
+                                        <a class="navbar-brand brand-logo" href="{{url_for('home')}}">
+                                        <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                                        <span class="first">My Handyman</span>
+                                        <span>Residential and Commercial services</span>
+                                        </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!--  Brand Logo Search bar section ends here   -->
+
+
+
+
+
+                 <!--Navigations section  for big screens starts here  -->
+                <div class="row nav-grand-parent d-none d-lg-block" id="drop"> 
+                    <div class="col-12 nav-parent">
+                        <nav class="navbar navbar-expand-md bg-body-tertiary nav-parent">
+                            <div class="nav-child">
+                                <div class="nav-grand-child-1">
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('home')}}#howitworks">How it works</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                {% if session.get('user_id') == None %}
+                                <div class="nav-grand-child-2">
+                                    <a role="button" href="{{url_for('login')}}" class="btn d-inline-block login">Login
+                                    </a>
+                                    <a role="button" href="{{url_for('sign_up')}}" class="btn d-inline-block signup">Sign up
+                                    </a>
+                                </div>
+                                {% endif %}
+                                {% if session.get('user_id') != None %}
+                                <div class="nav-grand-child-3">
+                                    <div class="dropdown profile-dropdown" >
+                                            <a class="dropdown-toggle"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                                                <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image">Hi {{user_online.user_username}}
+                                            {% else%}
+                                                <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image">Hi {{user_online.user_username}}
+                                            {% endif %}
+                                            </a>
+                                            <div class="profile-dropdown-child">
+                                            
+                                                <ul class="dropdown-menu">
+                                                    <li class="first">
+                                                        <img src="{{url_for('static',filename='images/user.png')}}"alt="user image" style="width:30px !important; display: inline-block;">
+                                                        <span style="display: inline-block;">{{user_online.user_username}}</span>
+                                                    </li>
+                                                    <hr>
+                                                    <li><a class="dropdown-item" href="{{url_for('user_dashboard')}}">My dashboard</a></li>
+
+                                                    <li><a class="dropdown-item" href="{{url_for('my_profile')}}">View profile</a></li>
+                                                    
+                                                    <li><a class="dropdown-item" href="{{url_for('update_password')}}">Change password</a></li>
+
+                                                    <li><a class="dropdown-item" href="{{url_for('log_out')}}">Log out</a></li> 
+                                                </ul>
+                                            </div> 
+                                          
+                                    </div>     
+                                </div>
+                                {% endif %}
+                            </div>
+                                                  
+                        </nav>
+                    </div>
+                </div> 
+
+                <!--Navigations section  for big screens ends here  -->
+
+
+
+
+
+                <!-- Navigation section for medium screen and below (offcanvas) starts here -->
+                <div class="row d-block d-lg-none offcanvas-nav-grand-parent">
+                  <div class="col-12 offcanvas-nav-parent">
+                    <nav class="navbar bg-body-tertiary offcanvas-nav-parent">
+                      <div class="container-fluid offcanvas-nav-child">
+                        <button class="navbar-toggler flex-start toggleme" type="button" data-bs-toggle="offcanvas" data-bs-target="#navigations" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="nav offcanvas-nav-grand-child1  me-3">
+                            {% if session.get('user_id') != None %}
+                            <div class="dropdown offcanvas-profile-dropdown" >
+                                <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {% if user_online.user_dp == None or user_online.user_dp == '' %}
+                                        <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image" width="30px">Hi {{user_online.user_username}}
+                                    {% else%}
+                                        <img src="/static/users_images/{{user_online.user_dp}}" alt="user-image" width="30px">Hi {{user_online.user_username}}
+                                    {% endif %}
+                                </a>
+                                <div class="offcanvas-profile-dropdown-child">
+                                <ul class="dropdown-menu">
+                                    <li class="first">
+                                        <img src="{{url_for('static',filename='images/user.png')}}" alt="user image" style="width:30px !important; display: inline-block;">
+                                        <span style="display: inline-block;">{{user_online.user_username}}</span>
+                                    </li>
+                                    <hr>
+
+                                        <li><a class="dropdown-item" href="{{url_for('user_dashboard')}}">My dashboard</a></li>
+                                    
+                                        <li><a class="dropdown-item" href="{{url_for('my_profile')}}">View profile</a></li>
+
+                                        <li class="d-md-none d-block"><a class="dropdown-item" href="{{url_for('edit_profile')}}">Edit Profile</a></li>
+
+                                        <li class="d-md-none d-block"><a class="dropdown-item" href="{{url_for('my_profile')}}#viewreviews">See reviews</a></li> 
+
+                                        <li><a class="dropdown-item" href="{{url_for('update_password')}}"> Change Password</a></li>
+
+                                        <li class="d-md-none d-block"><a class="dropdown-item" href="#">settings</a></li>
+
+                                        <li><a class="dropdown-item" href="{{url_for('log_out')}}">Log out</a></li> 
+                                </ul>
+                                </div> 
+                            </div>
+                          {% endif %}
+                          
+                            {% if session.get('user_id') == None %}
+                            <div class="offcanvas-buttons">
+                                <a role="button" href="{{url_for('login')}}" class="btn d-inline-block login">Login
+                                </a>
+                                <a role="button" href="{{url_for('sign_up')}}" class="btn d-inline-block signup">
+                                    Sign Up
+                                </a>
+                            </div>
+                            {% endif %}
+                        
+                        </div>
+
+                        <div class="offcanvas offcanvas-start nav offcanvas-nav-grand-child-2" tabindex="-1" id="navigations" aria-labelledby="offcanvasNavbarLabel">
+                          <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">HANDYMAN</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                          </div>
+                          <hr>
+                          <div class="offcanvas-body offcanvas-nav-great-grand-child-2">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                              <li class="nav-item">
+                                  <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('home')}}#howitworks">How it works</a>
+                              </li>
+                              
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+
+                <!-- Navigation section for medium screen and below (offcanvas) ends here -->
+
+           

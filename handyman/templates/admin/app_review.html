@@ -1,0 +1,147 @@
+{% extends 'admin/admin_dashboard.html' %}
+
+{% block content %}
+
+<div class="col-md-10 admin-dashboard-parent-b">
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid ">
+                    
+                <div class="col-md-2 d-flex">
+                    <div class="col-12">
+                        <label for="sort-review-app form-label">Sorted by:</label>
+                        <select name="sort-review-app" id="sort-review-app">
+                            <option value="asc" {% if sort_app_reviews == 'asc' %} selected {% endif %}>ASC</option>
+                            <option value="desc" {% if sort_app_reviews == 'desc' %} selected {% endif %}>DESC</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex">
+                    <div class="col-12">
+                        <label for="limit-app-reviews form-label">Numbers of rows:</label>
+                        <select name="limitappreviews" id="limit-app-reviews">
+                            <option value="25" {% if limit_app_reviews == '25' %} selected {% endif %}>25</option>
+                            <option value="50" {% if limit_app_reviews == '50' %} selected {% endif %}>50</option>
+                            <option value="100" {% if limit_app_reviews == '100' %} selected {% endif %}>100</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger">
+                        Deletebulk
+                    </button>
+                </div>
+                    
+              
+
+                <div class="col-md-3">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-app-review-input">
+                        <button class="btn btn-outline-primary" type="button" id="search-app-review">Search</button>
+                    </form>
+                </div>
+                </div>
+              </nav>
+        </div>
+    </div>
+    <div class="row">
+                    {% with messages=get_flashed_messages(with_categories=True)%}
+                        {%if messages%}
+                          {% for cat,message in messages %}
+                                {% if cat=='error'%}
+                                  <div class="alert alert-danger text-center">{{message}}</div>
+                                {% else %}
+                                  <div class="alert alert-success text-center">{{message}}</div>  
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+        <div class="col-12 mt-5">
+           
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Review Id</th>
+                    <th scope="col">Review ratings</th>
+                    <th scope="col">Review content</th>
+                    <th scope="col">Reviewed by</th>
+                    <th scope="col">Review status</th>
+                    <th scope="col">Reviewed on</th>
+                    <th scope="col">Del</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% if reviews %}
+                  
+                        {% for review in reviews %}
+                            <tr>
+                                <td><input type="checkbox" name="selector" value="{{review.review_id}}"></td>
+                                <td class="review_id">{{review.app_review_id}}</td>
+                                <td> 
+                                    {% if review.app_review_rating %}
+                                        {% for i in range(review.app_review_rating) %}
+                                        <span class="filled" style="font-size:14px; margin-right:3px;">★</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                                <td>{{review.app_review_content}}</td>
+                                <td class="fullname-info">{{review.app_from_user.user_username}}
+                                    <ul class="dropdown-menu details-info">
+                                        <li class="dropdown-item">{{review.app_from_user.user_firstname}}</li>
+                                        <li class="dropdown-item">{{review.app_from_user.user_lastname}}</li>
+                                    </ul>
+                                </td>
+                                <td class="modify-app-review-status">{{review.app_review_status}}
+                                    <ul class="dropdown-menu status-info">
+                                        <li><a class="dropdown-item change-app-status" role="button">allowed</a></li>
+                                        <li><a class="dropdown-item change-app-status" role="button">disabled</a></li>
+                                    </ul>
+                                </td>
+                                <td>{{review.review_updated_on}}</td>
+                                <td>
+                                    <a class="btn btn-danger delete-app-review" role="button"  style="font-size:12px;">
+                                        <i class="fa-solid fa-trash" style="font-size:12px;">
+                                            <span style="display:none;" class="delete-review-id">{{review.app_review_id}}</span>
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                  <tr>
+                    
+                  </tr>
+                  
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+        
+    
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+            
+      
+{% endblock content %}

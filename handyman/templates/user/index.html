@@ -1,0 +1,468 @@
+{% include 'user/header.html' %}
+
+
+
+
+
+
+                {% with messages = get_flashed_messages(with_categories = True)%}
+                {%if messages%}
+                  {% for cat,message in messages %}
+                        {% if cat == 'error' %}
+                          <div class="alert alert-danger text-center"><p>{{message}}</p></div>
+                        {% elif cat=='info' %}
+                        <div class="alert alert-info text-center"><p>{{message}}</p></div>
+                        {% else %}
+                          <div class="alert alert-success text-center"><p>{{message}}</p></div>  
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+
+
+                 <!-- carousel/banner section starts here  (Hero section) -->
+                <div class="row">
+                  <div class="col banner-parent">
+                    <div class="carousel slide banner-child" data-bs-ride="carousel">
+                      <div class="carousel-inner banner-grand-child-1">
+                          <div class="carousel-item active">
+                            <img src="{{url_for('static',filename='images/plumbman.jpg')}}" class="d-block w-100" alt="image of a cartenter at work cutting wood">
+                            <div class="carousel-item-child">
+                              <h1>
+                                Find <span class='emphacytext'> Trusted Experts </span> ready to serve your needs.
+                              </h1>
+                              <a href="{{url_for('handymanpage')}}" role="button" class="getstarted">Find a Handyman Now</a>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{{url_for('static',filename='images/caropics.jpg')}}" class="d-block w-100" alt="image of a plumber at work fixing broken pipes">
+                            <div class="carousel-item-child">
+                              <h1>
+                                Connecting you with <span class='emphacytext'> Verified Handymen </span> in your community.
+                              </h1>
+                              <a href="{{url_for('handymanpage')}}" role="button" class="getstarted">Find a Handyman Now</a>
+                            </div>
+                          </div>
+                          <div class="carousel-item">
+                            <img src="{{url_for('static',filename='images/newshow.jpg')}}" class="d-block w-100" alt="image of a mechanic do repairs on a car bonnet">
+                            <div class="carousel-item-child">
+                              <h1>
+                                Get <span class='emphacytext'> Quality Service </span> from skilled professionals near you.
+                              </h1>
+                              <a href="{{url_for('handymanpage')}}" role="button" class="getstarted">Find a Handyman Now</a>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="banner-grand-child-2">
+                      </div>
+                    
+                    </div>
+                  </div>
+                </div>
+                 <!-- carousel/banner section ends here  (Hero section) -->
+
+
+
+
+
+                 <!-- Minor display of services section starts here -->
+
+                <div class="row">
+                  <div class="col-12 section-header">
+                      <h1>Services</h1> 
+                  </div>
+                  <div class="row featured-services-parent">
+
+
+                    {% if services %}
+                      {% for service in services %} 
+                          <div class="col-3 featured-services my-services-display">
+                            <span style="display:none" class="handy_id">{{service.handyservice_id}}</span>
+                            <img src=/static/images/{{service.handyservice_icon}} alt="Image picture of a {{service.handyservice_icon_alt}}" class="d-block"/>
+                            <h3>{{service.handyservice_name}}</h3>
+                            <p>{{service.handyservice_description}}</p>
+                          </div>
+                      {% endfor %}
+                    {% endif %}
+                    
+                    <div class="col-12 director-butt">
+                      <a href="{{url_for('services')}}" role="button">View All Services  <i class="fa-duotone fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+
+                <!-- Minor display of services section ends here -->
+
+
+
+
+
+
+                 <!--Why choose us section starts here  -->
+
+                <!-- <div class="row why-choose-us-parent">
+                  <div class="col-12 section-header">
+                    <h1>
+                      Why choose us
+                    </h1>
+                  </div>
+                  <div class="col why-choose-us-child">
+                    <div class="row align-items-center mb-5 why-choose-us-grand-child">
+                      <div class="col-sm-6 col-md-5 col-lg-4 mb-2-9 mb-sm-0">
+
+                          <div class="pr-md-3 space-giver">
+                              <div class="text-center text-sm-right mb-2-9 px-sm-10">
+                                  <div class="mb-4">
+                                    <img src="{{url_for('static',filename='images/vetted.png')}}" alt="Icon image of a professional" class="rounded-circle">
+                                  </div>
+                                  <h4>Vetted Professional</h4>
+                                  <p class="display-15 mb-0">
+                                    We carefully screen and vet all our handymen to
+                                    ensure they have the necessary skills,
+                                    qualifications, and experience.
+                                    You can trust that you're getting reliable 
+                                    and capable professionals.
+                                  </p>
+                              </div>
+                              <div class="text-center text-sm-left mb-2-9 px-sm-10">
+                                <div class="mb-4">
+                                    <img src="{{url_for('static',filename='images/booking.png')}}" alt="icon images of a phone" class="rounded-circle">
+                                </div>
+                                <h4 class="sub-info">Convenient and Easy Booking</h4>
+                                <p class="display-30 mb-0">
+                                  Our user-friendly platform makes it simple to find and book the right handyman 
+                                  for your needs. You can schedule appointments at your convenience,
+                                   and the process is quick and hassle-free.
+
+                                </p>
+                            </div>
+                          </div>
+
+                      </div>
+
+                      <div class="col-lg-4 col-md-2 d-none d-md-block why-choose-us-great-grand-child">
+                          <div class=" why-choose-us-great-grand-child-child ">
+                              <img src="{{url_for('static',filename='images/why2.jpg')}}" alt="img of a question mark">
+                          </div>
+                      </div>
+
+                      <div class="col-sm-6 col-md-5 col-lg-4 mb-2-9 mb-sm-0">
+
+                          <div class="pl-md-3 space-giver">
+                             
+                              <div class="text-center text-sm-right ">
+                                <div class="mb-4">
+                                  <img src="{{url_for('static',filename='images/customer-service.png')}}" alt="icon image of tool box" class="rounded-circle">
+                                </div>
+                                <h4 class="sub-info">Wide Range of Services</h4>
+                                <p class="display-30 mb-0">
+                                  Our platform connects you with experts in various trades, from plumbing and 
+                                  electrical work to painting and general repairs. No matter the task, 
+                                  we have a professional ready to help.
+
+                                </p>
+                              </div>
+                    
+                              <div class="text-center text-sm-left ">
+                                  <div class="mb-4">
+                                      <img src="{{url_for('static',filename='images/customer-satisfaction.png')}}" alt="icon image of a happy face" class="rounded-circle">
+                                  </div>
+                                  <h4 class="sub-info">Satisfaction Guarantee</h4>
+                                  <p class="display-30 mb-0">
+                                    We are committed to ensuring you're happy with the service provided.
+                                     If you're not satisfied, we'll work with you to make it right.
+
+
+                                  </p>
+                              </div>
+                          </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+
+                 <!--Why choose us section ends here  -->
+
+
+
+
+
+
+
+
+
+
+
+
+               <div class="row why-choose-us-section">
+
+                    <div class="col-12 section-header">
+                        <h1>Why choose us</h1>
+                    </div>
+
+                  <div class="col why-choose-us-content">
+                      <div class="row align-items-center mb-5 why-choose-us-row">
+                          <div class="col-sm-6 col-md-5 col-lg-4 why-choose-us-col">
+
+                              <div class="service-section">
+
+                                  <div class="service-card">
+                                      <div class="icon-container">
+                                          <img src="{{url_for('static',filename='images/vetted.png')}}" alt="Icon image of a professional" class="rounded-circle">
+                                      </div>
+                                      <h4>Vetted Professional</h4>
+                                      <p class="description">
+                                          We carefully screen and vet all our handymen to ensure they have the necessary skills, qualifications, and experience. You can trust that you're getting reliable and capable professionals.
+                                      </p>
+                                  </div>
+                                  <div class="service-card">
+                                      <div class="icon-container">
+                                          <img src="{{url_for('static',filename='images/booking.png')}}" alt="icon image of a phone" class="rounded-circle">
+                                      </div>
+                                      <h4 class="sub-info">Convenient and Easy Booking</h4>
+                                      <p class="description">
+                                          Our user-friendly platform makes it simple to find and book the right handyman for your needs. You can schedule appointments at your convenience, and the process is quick and hassle-free.
+                                      </p>
+                                  </div>
+
+                              </div>
+                          </div>
+              
+                          <div class="col-lg-4 col-md-2 why-choose-us-image">
+                              <img src="{{url_for('static',filename='images/why2.jpg')}}" alt="img of a question mark">
+                          </div>
+              
+                          <div class="col-sm-6 col-md-5 col-lg-4 why-choose-us-col">
+                              <div class="service-section">
+                                
+                                  <div class="service-card">
+                                      <div class="icon-container">
+                                          <img src="{{url_for('static',filename='images/customer-service.png')}}" alt="icon image of a toolbox" class="rounded-circle">
+                                      </div>
+                                      <h4 class="sub-info">Wide Range of Services</h4>
+                                      <p class="description">
+                                          Our platform connects you with experts in various trades, from plumbing and electrical work to painting and general repairs. No matter the task, we have a professional ready to help.
+                                      </p>
+                                  </div>
+                                  <div class="service-card">
+                                      <div class="icon-container">
+                                          <img src="{{url_for('static',filename='images/customer-satisfaction.png')}}" alt="icon image of a happy face" class="rounded-circle">
+                                      </div>
+                                      <h4 class="sub-info">Satisfaction Guarantee</h4>
+                                      <p class="description">
+                                          We are committed to ensuring you're happy with the service provided. If you're not satisfied, we'll work with you to make it right.
+                                      </p>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- How it works section starts here -->
+
+                <div class="row how-it-works-bg-img" id="howitworks">
+
+                      <div class="col-12 section-header how-it-works-header">
+                        <h1>
+                          how it works
+                        </h1>
+                      </div>
+
+                      <div class="col-12">
+                        <h2 class="headings">For User</h2>
+                        <div class="row how-it-works-guidance">
+                          <div class="col-md-3 how-it-works-guidance-steps">
+                            <div class="stop"><p>1</p></div>
+                            <h4>SIGN UP AND SEARCH</h4>
+                            <p>Create an account on our platform, then browse through our list of skilled handymen.
+                               You can filter by location, service type, and customer reviews to find the right professional for your needs.</p>
+                          </div>
+                          <div class="col-md-1 how-it-works-guidance-steps borderline d-none d-md-block"></div>
+                          <div class="col-md-10 how-it-works-guidance-steps borderlines d-block d-md-none"></div>
+                          <div class="col-md-4 how-it-works-guidance-steps">
+                            <div class="ready"><p>2</p></div>
+                            <h4>SELECT AND CONNECT</h4>
+                            <p>Choose a handyman based on your preferences and directly reach out to discuss the job.
+                               You can negotiate pricing, timelines, and other details without any interference from the platform.</p>
+                          </div>
+                          <div class="col-md-1 how-it-works-guidance-steps borderline d-none d-md-block"></div>
+                          <div class="col-md-10 how-it-works-guidance-steps borderlines d-block d-md-none"></div>
+                          <div class="col-md-3 how-it-works-guidance-steps">
+                            <div class="go"><p>3</p></div>
+                            <h4>GET THE JOB DONE</h4>
+                            <p>Once you've agreed on the terms, the handyman will complete the service.
+                               Payment and any additional arrangements are handled directly between you and the handyman.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 mb-5">
+                        <h2 class="headings">For Handymen</h2>
+                        <div class="row how-it-works-guidance">
+                          <div class="col-md-3 how-it-works-guidance-steps">
+                            <div class="stop"><p>1</p></div>
+                            <h4>CREATE YOUR PROFILE</h4>
+                            <p>Sign up on our platform and build a detailed profile showcasing your skills, experience, and areas of expertise.
+                               Add customer reviews and photos of past work to attract potential clients</p>
+                          </div>
+                          <div class="col-md-1 how-it-works-guidance-steps borderline d-none d-md-block"></div>
+                          <div class="col-md-10 how-it-works-guidance-steps borderlines d-block d-md-none"></div>
+                          <div class="col-md-4 how-it-works-guidance-steps">
+                            <div class="ready"><p>2</p></div>
+                            <h4>CONNECT WITH CUSTOMERS</h4>
+                            <p>Customers will reach out to you directly based on your profile. You can discuss job details,
+                               negotiate pricing, and set up appointments according to your availability.</p>
+                          </div>
+                          <div class="col-md-1 how-it-works-guidance-steps borderline d-none d-md-block"></div>
+                          <div class="col-md-10 how-it-works-guidance-steps borderlines d-block d-md-none"></div>
+                          <div class="col-md-3 how-it-works-guidance-steps">
+                            <div class="go"><p>3</p></div>
+                            <h4>COMPLETE THE JOB AND GET PAID</h4>
+                            <p>After agreeing on the terms with the customer, complete the job to their satisfaction.
+                               Payments are made directly to you, with no platform involvement in financial transactions.</p>
+                          </div>
+                        </div>
+                      </div>
+                     
+                </div>
+
+                <!-- How it works section ends here -->
+
+
+
+
+
+                <!-- reviews section starts here -->
+
+
+                <div class="row review-great-grand-parent">
+
+                  <div class="col-12 section-header reviews-section-header">
+                        <h3>Satisfied customers reviews and ratings</h3> 
+                  </div> 
+
+                  <div class="col review-grand-parent">
+                    <div class="row review-parent">
+                      {% if app_reviews %}
+
+                        {% for review in app_reviews %}
+
+                       
+                          <div class="col-md-3 review-child review-displays">
+                            <div class="profile-box">
+                              <p>{{ review.app_from_user.user_firstname[0].upper() }}</p>
+                            </div>
+                            <p class="username">{{review.app_from_user.user_firstname}}</p>
+                            <div class="rating-box">
+                              <p class="filled-gold">
+                              {% for i in range(review.app_review_rating) %}
+                                ★
+                              {% endfor %}
+                            </p>
+                            </div>
+                            <span class="review-text">{{review.app_review_content[:100]}}</span>
+                            <span class="extra-text" style="display: none;">{{review.app_review_content[100:]}}</span>
+                            <a role="button" class="toggle-button">Show More...</a>
+                              
+                          </div>
+                     
+
+                        {% endfor %}
+
+                      {% endif %}
+
+                      
+
+                    
+                    </div>
+                  </div>
+  
+                  <div class="col-12 director-butt mt-5">
+                    <a href="{{url_for('reviews')}}" role="button">See More <i class="fa-duotone fa-solid fa-arrow-right-long"></i></a>
+                  </div>
+  
+                </div>
+
+                 <!-- reviews section ends here -->
+
+
+
+
+
+                <!--About us section starts here -->
+                <div class="row">
+                  <div class="col about-great-grand-parent">
+                    <div class="col-12 section-header about-section-header">
+                          <h1>
+                            About Us
+                          </h1>
+                    </div>
+                    <div class="row about-grand-parent">
+                      <div class='col-md-6 col-sm-12 about-parent-1'>
+                        <div class="about-parent-1-child-1">
+                          <img src="{{url_for('static',filename='images/brickswall3.jpg')}}" alt=" brick background image"
+                          class="img-fluid bgimage"/>
+                        <div class="overlaybg">
+                        </div>
+                        </div>
+                        <div class="about-parent-1-child-2">
+                          <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="Our logo image"/>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6 col-sm-12 about-parent-2">
+                        <div class="about-parent-2-child">
+                          <h3>
+                            Our logo Started the introduction
+                          </h3>
+                          <p>In reference to our logo, we got all the services you may need, and professional
+                            handymen to handle them. </p>
+                        </div>
+                        <div class="about-parent-2-child">
+                            <h3>
+                              We connect you with the best professionals near you
+                            </h3>
+                            <p>
+                              We empower your space with expert handyman solutions.
+                              From repairs to renovations, our skilled team delivers reliable craftsmanship,
+                              ensuring your home is a haven of functionality and style.
+                              Discover competent professional handyman and seamless services today.
+                            </p>
+                        </div>
+                          
+                      </div>
+                    </div>
+
+                    <div class="col-12 director-butt">
+                      <a href="{{url_for('about_us')}}" role="button">Read More About Us  <i class="fa-duotone fa-solid fa-arrow-right-long"></i></a>
+                    </div>
+                            
+                  </div>
+                </div>
+
+               <!--About us section ends here -->
+                  
+{% include 'user/footer.html' %}

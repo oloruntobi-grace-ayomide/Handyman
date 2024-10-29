@@ -1,0 +1,351 @@
+
+
+
+                <!-- Footer section starts here -->
+
+                <div class="row footer-great-grand-parent">
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-1">
+                      <div class="footer-parent-1">
+                        <a class="navbar-brand footer-logo" href="#">
+                        <img src="{{url_for('static',filename='images/newlogo1.png')}}" alt="handylogo image"/>
+                        </a>
+                        <span>My Handyman</span>
+                        <span>Residential and Commercial services</span>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-2">
+                      <h3 class="col-12">Useful Links</h3>
+                      <div class="row footer-great-grand-child-1">
+                        <div class="col-md-6  col-sm-6">
+                          <ul class="navbar-nav footer-nav">
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('home')}}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('services')}}">Services</a>
+                            </li>
+    
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('about_us')}}">About Us</a>
+                            </li>
+    
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('handymanpage')}}">Find A PRO</a>
+                            </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6  col-sm-6">
+                          <ul class="navbar-nav footer-nav">
+                            <li class="nav-item">
+                              <a class="nav-link" href="#howitworks">How it works</a>
+                            </li>
+    
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('reviews')}}">Reviews</a>
+                            </li>
+                          
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('frequently_ask_questions')}}">Faqs</a>
+                            </li>
+    
+                            <li class="nav-item">
+                              <a class="nav-link" href="{{url_for('contact_us')}}">Contact Us</a>
+                            </li>
+                            
+                          </ul>
+                        </div>
+                        </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-3">
+                    <h3 class="mb-3">CONTACT INFO</h3>
+                  
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=oayomideg@gmail.com&su=Your Subject Here&body=Your Message Here" target="_blank" class="email">
+                    <img src="{{url_for('static',filename='images/gmail.png')}}"  alt="email logo leading to our email adrress">
+                    <span>MYHANDYMAN@GMAIL.COM</span>
+                  </a>
+                  <div class="other-social-handles">
+                    <a href=""><img src="{{url_for('static',filename='images/facebook.png')}}" alt="facebook logo leading to our facebook handle"></a>
+                    <a href=""><img src="{{url_for('static',filename='images/instagram.png')}}" alt="instagram logo leading to our instagram handle"></a>
+                  </div> 
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-12 footer-grand-parent-4">
+                    <h3 class="col-12">Newsletter</h3>
+                          <form action="/handyman/subscribe/email/" method="POST">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                            <input type="email" name="subscriber-email"  placeholder="Email" class="form-control">
+                            <button class="btn btn-primary col-md-6 col-sm-8 mt-2 text-center">Subscribe</button>
+                          </form>     
+                  </div> 
+
+                </div>
+
+                <!-- Footer section ends here -->
+              
+
+                <!-- copyright section starts here -->
+                <div class="row">
+                  <div class="col copyright-footer">
+                      <p>&copy; 2024 MY HANDYMAN.NG  <a href="#"> | PRIVACY POLICY | </a>  ALL RIGHT RESERVED.</p>
+                  </div>
+                </div>
+
+                <!-- copyright section ends here -->
+
+
+
+
+
+
+
+          <!-- The closing tags of header section and javascript linking starts here -->
+
+          </div>
+        </div>
+      </div> 
+    
+    <script src="{{url_for('static',filename='bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script src="{{url_for('static',filename='jquery-3.7.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='jquery.js')}}"></script>
+
+    <!-- The closing tags of header section and javascript linking ends here -->
+
+
+
+    <!-- javascript codes starts here -->
+    <script>
+$(document).ready(function(){
+
+  // the sign-up actionbase response starts here
+
+  $('#user_state').change(function(){
+    var stateid = $(this).val()
+    $('#user_lga').load('/handyman/lga/loads/',"id="+stateid)
+  })
+
+
+
+
+  $('#user_email').change(function(){
+    var email=$(this).val()
+    $.get('/handyman/email/checks/','email='+email,function(resp){
+      $('.notice').append(
+        '<div class="alert alert-info text-center">' + resp + '</div> '
+      )
+    })  
+  })
+
+
+
+
+  $('#user_username').change(function(){
+    var username=$(this).val()
+    $.get('/handyman/username/checks/','username='+username,function(resp){
+      $('.notice').append(
+        '<div class="alert alert-info text-center">' + resp + '</div>'
+      )
+    })
+  })
+
+  // the sign-up actionbase response ends here
+
+
+
+
+   // the sevice clicking and searches  actionbase response starts here
+
+  $('.featured-services').click(function() {
+      var serviceId=$(this).find('.handy_id').text()
+      var stateId=$('#state-filter').val()
+      if (stateId === 'all'|| stateId == null) {
+        window.location.href = '/handyman/click/services/get/proffessional/?service=' + serviceId + '&state=all';
+      } else {
+        window.location.href = '/handyman/click/services/get/proffessional/?service=' + serviceId + '&state=' + stateId;
+      }
+        
+    });
+
+
+    const savedState = localStorage.getItem('selectedState');
+      if (savedState) {
+          $('#state-filter').val(savedState);
+      }
+    
+
+    $('#state-filter').on('change', function() {
+            const selectedValue = $(this).val();
+            localStorage.setItem('selectedState', selectedValue);
+        });
+
+
+    $('#search-button').click(function(event) {
+    event.preventDefault();
+    var serviceName = $('#services-search').val();
+    if (serviceName) {
+        window.location.href = '/handyman/services/?search=' + encodeURIComponent(serviceName);
+    }
+    });
+
+
+    // the sevice clicking and search  actionbase response ends here
+
+
+
+    // the review form and other action relating to app review starts here
+
+    $('.makereview').click(function() {
+        $(this).closest('.personalized').find('.reviewshowform').toggle();
+    });
+    
+
+    $('.rating .star').click(function() {
+        var clickedStarValue = $(this).data('value');
+        var parentRating = $(this).closest('.rating');
+        
+        parentRating.find('#totalrating').val(clickedStarValue);
+        
+        parentRating.find('.star').each(function() {
+            if ($(this).data('value') <= clickedStarValue) {
+                $(this).addClass('filled').text('★');
+            } else {
+                $(this).removeClass('filled').text('☆');
+            }
+        });
+
+    });
+
+    // the review form and other action relating to app review starts here
+
+
+  //  handyman page search
+
+ 
+  $('#search-button-handyman').click(function(event) {
+    event.preventDefault();
+    var serviceName = $('#handyman-search').val();
+    var selectedState = $('#state').val();
+    console.log(selectedState)
+    if (serviceName && selectedState === 'all')  {
+        window.location.href = '/handyman/professional/handymen/?search=' + encodeURIComponent(serviceName) + '&state=all';
+    }else{
+      window.location.href = '/handyman/professional/handymen/?search=' + encodeURIComponent(serviceName) + '&state=' + selectedState;
+    }
+    });
+
+    const savedValue = localStorage.getItem('selectedSort');
+      if (savedValue) {
+          $('#state').val(savedValue);
+      }
+
+      $('#state').on('change', function() {
+            const selectedValue = $(this).val();
+            window.location.href = '/handyman/professional/handymen/?state='+ selectedValue;
+            localStorage.setItem('selectedSort', selectedValue);
+        });
+    
+  
+  //  handyman page search end here
+
+
+
+  document.querySelectorAll('.toggle-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const extraText = button.previousElementSibling; 
+        if (extraText.style.display === 'none') {
+            extraText.style.display = 'inline';
+            // reviewChild.style.minHeight = '250px';
+            button.textContent = 'Show Less'; 
+        } else {
+            extraText.style.display = 'none'; 
+            button.textContent = 'Show More'; 
+        }
+    });
+  });
+    
+
+  
+  window.addEventListener('resize', adjustReviewDisplay);
+    window.addEventListener('load', adjustReviewDisplay); 
+
+    function adjustReviewDisplay() {
+    let reviews = document.querySelectorAll('.review-displays');
+    let screenWidth = window.innerWidth;
+    
+    reviews.forEach((review, index) => {
+      if (screenWidth > 1024) {
+         
+          review.style.display = (index < 4) ? 'block' : 'none';
+
+        } else if (screenWidth >= 992 && screenWidth <= 1024) {
+   
+          review.style.display = (index < 3) ? 'block' : 'none';
+            
+        } else if (screenWidth >= 769  && screenWidth <= 883) {
+ 
+            review.style.display = (index < 3) ? 'block' : 'none';
+
+        } else if (screenWidth >= 480 && screenWidth <= 769) {
+ 
+            review.style.display = (index < 2) ? 'block' : 'none';
+
+        } else {
+
+          review.style.display = (index < 2) ? 'block' : 'none';
+        }
+    });
+}
+
+    
+ 
+  // sizing and controlling the display of services on my home page based on the width of the screen
+
+
+    window.addEventListener('resize', adjustServiceDisplay);
+    window.addEventListener('load', adjustServiceDisplay); // to check on page load
+
+    function adjustServiceDisplay() {
+    let services = document.querySelectorAll('.my-services-display');
+    let screenWidth = window.innerWidth;
+    
+    services.forEach((service, index) => {
+      if (screenWidth > 1024) {
+         
+            service.style.display = (index < 8) ? 'block' : 'none';
+
+        } else if (screenWidth >= 992 && screenWidth <= 1024) {
+   
+            service.style.display = (index < 6) ? 'block' : 'none';
+
+        }else if( screenWidth >= 884 && screenWidth <= 991 ){
+
+          service.style.display = (index < 3) ? 'block' : 'none';
+
+        } else if (screenWidth >= 480  && screenWidth <= 883 ) {
+
+            service.style.display = (index < 4) ? 'block' : 'none';
+ 
+        } else {
+
+            service.style.display = (index < 4) ? 'block' : 'none';;
+        }
+    });
+}
+
+    
+ 
+   
+   
+
+})
+
+
+</script>
+    
+
+<!-- javascript codes ends here -->
+
+</body>
+</html>

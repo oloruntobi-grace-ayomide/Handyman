@@ -1,0 +1,97 @@
+{% include 'user/header.html' %}
+
+             <!--Sign up section-->
+            <div class="row">
+                <div class="col-12 all-banner-page-img-2 media-signup-adjust">
+                    <div class="col-12 section-header services-section-header-1 banner-inner-div">
+                        <h1>
+                           Become An handyman
+                        </h1>
+                     </div>
+                </div>
+                
+            </div>
+             
+            <div class="container handyman-parent">
+                <div class="col">
+                  <p id="display-response"></p>
+                    {% with messages=get_flashed_messages(with_categories=True)%}
+                    {%if messages%}
+                      {% for cat,message in messages %}
+                            {% if cat=='error'%}
+                              <div class="alert alert-danger text-center">{{message}}</div>
+                            {% else %}
+                              <div class="alert alert-success text-center">{{message}}</div>  
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+              
+                    <form id="handyman-form" enctype="multipart/form-data" action="" method="POST">
+                      {{form.csrf_token}}
+
+                      <div class="row mb-3">
+                        <div class="col-sm-5 offset-1">
+                          {{form.businessname.label(class="col-sm-2 col-form-label", for="user_businessname")}}
+                        <div>
+                          {{form.businessname(class="form-control", id="user_businessname")}}
+                        </div>
+                        </div>
+                        <div class="col-sm-5 offset-1">
+                          Skill
+                        <div>
+                          <select name="skill" id="">
+                            <option selected>Please select</option>
+                            {% if skills %}
+                              {% for skill in skills %}
+                                  <option value="{{skill.skill_id}}">{{skill.skill_name}}</option>
+                              {% endfor %}
+                            {% endif %}
+                          </select>
+                        </div>
+                        </div>
+
+                      </div>
+                      <div class="row mb-3">
+                        <div class="col-sm-5 offset-1">
+                          {{form.dp.label(class="col-sm-2 col-form-label", for="user_dp")}}
+                        <div>
+                          {{form.dp(class="form-control", id="user_dp")}}
+                        </div>
+                        </div>
+
+                        <div class="col-sm-5 offset-1">
+                          Years of Experience
+                        <div>
+                        <select name="experience" id="user_ys_experience" class="form-select select-me">
+                              <option selected>Please Select</option>
+                            {% if experience %}
+                              {% for year in experience %}
+                                  <option value="{{year.year_id}}">{{year.year_data}}</option>
+                              {% endfor %}
+                            {% endif %}
+                        </select>
+                        </div>
+                        </div>
+                      </div>
+
+                        <div class="col-sm-5 offset-1">
+                          {{form.biography.label(class="col-sm-2 col-form-label", for="user_biography")}}
+                        <div>
+                          {{form.biography(class="form-control", id="user_biography")}}
+                        </div>
+                        </div>
+                        
+                      <hr class="col-sm-11 offset-1">
+                      <div class="row mb-3">
+                          <button type="button" class="submit-butt  btn col-8" id="submit-button">Register</button>
+                        </div>
+                      </div>
+                    
+                      
+                    </form>
+                </div>
+            </div> 
+          
+
+{% include 'user/footer.html' %}

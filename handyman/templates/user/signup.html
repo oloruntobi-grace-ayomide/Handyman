@@ -1,0 +1,232 @@
+{% include 'user/header.html' %}
+
+             <!--Sign up section-->
+            <div class="row">
+                <div class="col-12 all-banner-page-img-2 media-signup-adjust">
+                    <div class="col-12 section-header services-section-header-1 header-adjust">
+                        <h1>
+                           Sign Up Here
+                        </h1>
+                     </div>
+                </div>
+            </div>
+             
+            <div class="container signup-parent">
+              <div class="row">
+                <div class="col-12 notice">
+                  
+                    {% with messages = get_flashed_messages(with_categories=True)%}
+                    {%if messages %}
+                      {% for cat,message in messages %}
+                            {% if cat == 'error'%}
+                              <div class="alert alert-danger">{{message}}</div>
+                            {% else %}
+                              <div class="alert alert-success">{{message}}</div>  
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                  {% endwith %}
+
+                  <div>
+                    {% if form.firstname.errors %}
+                      {% for error in form.firstname.errors %}
+                            <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+                    
+                    
+                    {% if form.lastname.errors %}
+                      {% for error in form.lastname.errors %}
+                      <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}  
+
+
+                    {% if form.phone_no.errors %}
+                      {% for error in form.phone_no.errors %}
+                      <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %} 
+                    
+                    
+                    {% if form.email.errors %}
+                      {% for error in form.email.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %} 
+
+
+                    {% if form.username.errors %}
+                      {% for error in form.username.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+
+
+                    {% if form.password.errors %}
+                      {% for error in form.password.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+
+                    {% if form.confirmpassword.errors %}
+                      {% for error in form.confirmpassword.errors %}
+                        <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+
+                    {% if form.address.errors  %}
+                      {% for error in form.address.errors %}
+                      <p>{{error}}</p>
+                      {% endfor %}
+                    {% endif %}
+
+                    {% if form.agreement.errors  %}
+                        {% for error in form.agreement.errors %}
+                          <p>{{error}}</p>
+                        {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="col-12 sign-up-resize">
+                  <form action="" method="POST" id="signup-form">
+                    {{form.csrf_token}}
+
+                    <div class="row mb-3">
+                      <div class="col-md-4 offset-md-1">
+                        {{form.firstname.label(class="col-sm-2 col-form-label", for="user_firstname")}}
+                      <div>
+                        {{form.firstname(class="form-control", id="user_firstname")}}
+                      </div>
+                      </div>
+                       <div class="col-md-4 offset-md-1">
+                      {{form.lastname.label(class="col-sm-2 col-form-label", for="user_lastname")}}
+                      <div> 
+                        {{form.lastname(class="form-control", id="user_lastname")}}
+                      </div>
+                      </div> 
+                    </div>
+
+                    <div class="row mb-3">
+
+                      <div class="col-md-4 offset-md-1">
+                        {{form.phone_no.label(class="col-sm-2 col-form-label", for="user_phoneno")}}
+                      <div>
+                        {{form.phone_no(class="form-control", id="user_phoneno")}}
+                      </div>
+                      </div>
+
+                      <div class="col-md-4 offset-md-1">
+                        {{form.email.label(class="col-sm-2 col-form-label", for="user_email")}}
+                      <div>
+                        {{form.email(class="form-control", id="user_email")}}
+                      </div>
+                      </div>
+
+                    </div>
+                    
+                    <div class="row mb-3">
+                      <div class="col-md-4 offset-md-1">
+                        {{form.username.label(class="col-sm-2 col-form-label", for="user_username")}}
+                      <div>
+                        <span class="userwarning">note that the username cannot be changed</span>
+                        {{form.username(class="form-control", id="user_username")}}
+                      </div>
+                      </div>
+
+                      <div class="col-md-4 offset-md-1">
+                        {{form.password.label(class="col-sm-2 col-form-label", for="user_pwd")}}
+                      <div>
+                        <span class="userwarning">must be up to 6 character</span>
+                        {{form.password(class="form-control", id="user_pwd")}}
+                      </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-4 offset-md-1">
+                        {{form.confirmpassword.label(class="col-sm-4 col-form-label", for="user_cpwd")}}
+                      <div>
+                        <span class="userwarning">must match the password above</span>
+                        {{form.confirmpassword(class="form-control", id="user_cpwd")}}
+                      </div>
+                      </div>
+                      <div class="col-md-4 offset-md-1">
+                        {{form.address.label(class="col-sm-2 col-form-label", for="user_address")}}
+                      <div>
+                        <span class="userwarning">Your house address and nearest bustop</span>
+                        {{form.address(class="form-control", id="user_address")}}
+                      </div>
+                      </div>
+                      
+                    </div>
+
+                    <div class="row mb-3">
+                      <div class="col-md-4 offset-md-1">
+                        <label class="col-sm-4 col-form-label", for="user_state">State</label>
+                        <div>
+                          <select name="state" id="user_state" class="form-select select-me">
+                              <option selected>Please Select</option>
+                              {% if states %}
+                                {% for state in states %}
+                                    <option value="{{state.state_id}}">{{state.state_name}}</option>
+                                {% endfor %}
+                              {% endif %}
+                        </select>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4 offset-md-1">
+                        <label class="col-sm-4 col-form-label", for="user_lga">LGA</label>
+                        <div>
+                          <select name="lga" id="user_lga" class="form-select select-me">
+                              <option selected>Please Select</option>
+                              <!-- LGA options will be populated here -->
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr class="col-12">
+
+                    <div class="row mb-3">
+                      <div class="col-12 services-option-notice">
+                        <p>This Section is Optional (It is for those intersted in rendering services on this platform).</p>
+                      </div>
+                      <div class="col-sm-12 services-options">
+                          <label for="services" class="col-sm-12 col-form-label">Available services</label>
+                          <div class="text-center">
+                            {% if services %}
+                              {% for service in services %}
+                                <input type="checkbox" name="services" class="service-checks mb-3" value="{{service.handyservice_id}}"><span>{{service.handyservice_name}}</span>
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                      </div>
+                    </div>
+                 
+                   
+                    <div class="row mb-0">
+                      <div class="agreement-div">
+                           {{form.agreement(class="form-check-input", id="agreetopolicy")}}<p>I Agree to the <span>Terms and Condition</span> of this platform</p>
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+          
+                      <div class="agreement-div col-sm-12 text-center">
+                        {{form.submit(class='submit-butt  btn col-10 ',id='submit-button')}}
+                      </div>
+                    </div>
+                    <div class="agreement-div col-md-10 offset-md-1 m-auto ">
+                      <p class="beforechecker">Already have an account? <a href="{{url_for('login')}}"> Login</a></p>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+                
+            </div> 
+          
+
+{% include 'user/footer.html' %}

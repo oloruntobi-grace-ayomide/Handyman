@@ -1,0 +1,83 @@
+{% include 'user/header.html' %}
+
+             <!--reviews section main page-->
+            <div class="row">
+                <div class="col-12 all-banner-page-img-1">
+                    <div class="col-12 section-header services-section-header header-adjust">
+                        <h1>
+                         Reviews
+                        </h1>
+                     </div>
+                </div>
+            </div>
+            {% with messages=get_flashed_messages(with_categories=True)%}
+            {%if messages%}
+              {% for cat,message in messages %}
+                    {% if cat=='error'%}
+                      <div class="alert alert-danger">{{message}}</div>
+                    {% else %}
+                      <div class="alert alert-success">{{message}}</div>  
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+      
+            <div class="review-container personalized">
+              <h3> Make a review </h3>
+              <a role="button" class="btn btn-warning btn-sm makereview">Leave a review</a><br>
+
+              <form action="/handyman/submit/app/reviews/" method="POST" style="display:none;" class="reviewshowform">
+                <div>
+                  <label>Rating:</label>
+                  <div class="rating">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                      <span data-value="1" class="star">☆</span>
+                      <span data-value="2" class="star">☆</span>
+                      <span data-value="3" class="star">☆</span>
+                      <span data-value="4" class="star">☆</span>
+                      <span data-value="5" class="star">☆</span>
+                      <input type='hidden' name="rating"  id="totalrating">
+                  </div>
+                </div>  
+                
+                <div>
+                  <label for="comment" class="d-block">Your Comment:</label>
+                  <textarea id="comment" name="comment" rows="4" placeholder="Write your review here..."></textarea>
+                </div>
+          
+                  <button type="submit" class="btn btn-success">Submit Review</button>
+              </form>
+            </div>
+
+
+
+            <div class="row review-great-grand-parent mt-5">
+              <div class="col review-grand-parent">
+                <div class="row review-parent">
+                  {% if app_reviews %}
+                    {% for review in app_reviews %}
+                  <div class="col-md-3 review-child">
+                    <div class="profile-box">
+                      <p>{{ review.app_from_user.user_firstname[0].upper() }}</p>
+                    </div>
+                    <p class="username">{{review.app_from_user.user_firstname}}</p>
+                    <div class="rating-box">
+                      <p class="filled-gold">
+                      {% for i in range(review.app_review_rating) %}
+                        ★
+                      {% endfor %}
+                    </p>
+                    </div>
+                    <span class="review-text">{{review.app_review_content[:100]}}</span>
+                    <span class="extra-text" style="display: none;">{{review.app_review_content[100:]}}</span>
+                    <a role="button" class="toggle-button">Show More...</a>
+                  </div>
+                    {% endfor %}
+                  {% endif %}
+                 
+                </div>
+              </div>
+            </div>
+
+
+{% include 'user/footer.html' %}         

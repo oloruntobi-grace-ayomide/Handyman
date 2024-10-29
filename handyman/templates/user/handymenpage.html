@@ -1,0 +1,139 @@
+{% include 'user/header.html' %}
+
+            <!-- Search bar section -->
+          
+              <div class=" row search-parent">
+                <div class="col-lg-8 col-md-7 search-form">
+                  <form action="{{url_for('handymanpage')}}" class="d-flex" role="search" method="get">
+
+                    <input type="text" class="form-control me-2 ps-3 search-input" placeholder="Search services" id="handyman-search" name="search">
+                    <button type="submit" class="btn search-button" id="search-button-handyman">Search</button>
+
+                  </form>
+              </div>
+
+              <div class="col-lg-4 col-md-5 filter-state">
+                <label for="state" class="d-inline-block col-lg-4">Filter by state:</label>
+                <select name="state" id="state" class=" col-lg-6">
+                  <option value="all">Please select state</option>
+                  {% if states %}
+                      {% for state in states %}
+                          <option value="{{ state.state_id }}" 
+                          {% if selected_state == state.state_id %} selected {% endif %}>
+                              {{ state.state_name }}
+                          </option>
+                      {% endfor %}
+                  {% endif %}
+                </select>
+              
+              </div>
+              
+            </div>
+        
+
+             <!--Handymen listing section-->
+            <div class="row">
+                <div class="col-12 all-banner-page-img-1 media-handyman-adjust">
+                    <div class="col-12 section-header services-section-header header-adjust-2">
+                        <h1>
+                          Get Professionals
+                        </h1>
+                     </div>
+                </div>
+            </div> 
+
+            {% with messages = get_flashed_messages(with_categories = True)%}
+                {%if messages%}
+                  {% for cat,message in messages %}
+                        {% if cat == 'error'%}
+                          <div class="alert alert-danger text-center">
+                            <h3>{{message}}</h3></div>
+                        {% else %}
+                          <div class="alert alert-success text-center">
+                            <h3>{{message}}</h3>
+                          </div>  
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+                
+            <div class="row mt-1">
+
+              {% if no_providers %}
+              <div class="alert alert-warning text-center mt-1">
+                  <h3>{{ no_providers }}</h3> 
+              </div>
+              <div class="col-12 text-center">
+                <a href="{{url_for('handymanpage')}}" role="button" class="btn btn-primary text-white">Go back to Prof handymanpage</a>
+              </div>
+              {% endif %}
+              
+              
+              {% if providers %}
+
+                {% for provider in providers %}
+
+                <div class="col-lg-3 offset-lg-0  col-md-4 mt-5 media-adjust-prof-display">
+                  <div class="card listing-parent">
+                     
+                      <div class="my-pic-background"></div>
+                      {% if provider.user_dp  != None %}
+                          <img src="/static/users_images/{{provider.user_dp}}" alt="user-image" class="handy-profile" >
+                      {% else %}
+                          <img src="{{url_for('static',filename='images/user.png')}}" alt="user-image" class="handy-profile" >
+                      {% endif %}
+                      <div class="card-body">
+                      {% if provider.user_business_name != None %}
+                        <h5 class="card-title">{{provider.user_business_name}}</h5>
+                      {% else %}
+                        <h5 class="card-title">{{provider.user_firstname}} {{provider.user_lastname}}</h5>
+                      {% endif %}
+                        <p>Phone: {{provider.user_phone}}</p>
+                        <p>Email: <a  href="https://mail.google.com/mail/?view=cm&fs=1&to={{ provider.user_email }}&su=Your Subject Here&body=Your Message Here" target="_blank">{{provider.user_email}}</a></p>
+                        <p>Location: {{provider.state.state_name}} state.</p>
+
+                        <div class="personalized">
+                          <a role="button" class="btn btn-warning btn-sm makereview">Leave a review</a><br>
+
+                          <form action="/handyman/professionals/review/" method="POST" style="display:none;" class="reviewshowform">
+                              <label>Rating:</label>
+                              <div class="rating">
+                                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                                  <input type="hidden" name="handyman-id" value="{{provider.user_id}}">
+                                  <span data-value="1" class="star">☆</span>
+                                  <span data-value="2" class="star">☆</span>
+                                  <span data-value="3" class="star">☆</span>
+                                  <span data-value="4" class="star">☆</span>
+                                  <span data-value="5" class="star">☆</span>
+                                  <input type='hidden' name="rating"  id="totalrating">
+                              </div>
+                      
+                              <label for="comment">Your Comment:</label>
+                              <textarea id="comment" name="comment" rows="4" placeholder="Write your review here..."></textarea>
+                              
+                              <button type="submit" class="btn btn-success">Submit Review</button>
+                          </form>
+                        </div>
+                      
+                        <a class="card-text see-more " href="/handyman/personalised/{{provider.user_id}}/">See more about me <i class="fa-solid fa-arrow-right"></i></a>
+                        
+                      </div>
+                  </div>
+                </div>
+
+
+                {% endfor %}
+
+              {% else %}
+              <div class="alert alert-warning text-center mt-2">
+                <h3>No providers available for the service you entered.</h3>
+              </div>
+              <div class="col-12 text-center">
+                <a href="{{url_for('handymanpage')}}" role="button" class="btn btn-primary text-white">Go back to Prof handymanpage</a>
+              </div>  
+              {% endif %}
+               
+            </div>
+                
+             
+{% include 'user/footer.html' %}

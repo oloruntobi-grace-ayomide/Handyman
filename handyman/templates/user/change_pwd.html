@@ -1,0 +1,46 @@
+{% include 'user/header.html' %}
+              <!-- lohin form section -->
+              {% with messages=get_flashed_messages(with_categories=True)%}
+                    {%if messages%}
+                      {% for cat,message in messages %}
+                            {% if cat=='error'%}
+                              <div class="alert alert-danger text-center">{{message}}</div>
+                            {% else %}
+                              <div class="alert alert-success text-center">{{message}}</div>  
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+              {% endwith %}
+
+
+
+                <div class="row login-grand-parent">
+                    <div class="col-12 login-parent-2">
+                      <h3>Change Password</h3>
+                    </div>
+                    <div class="col-md-8 offset-2 login-parent">
+                      <form action="/submit/forgot/password/" method="POST">
+                        {{form.csrf_token}}
+                        <div class="login-child">
+                            {{form.username(class="form-control input noround",placeholder="Your Username", id='username')}}
+                              {% for error in form.username.errors %}
+                              <span>{{error}}</span>
+                              {% endfor %}
+                            </div>
+                        <div class="login-child">
+                        {{form.password(class="form-control input noround",placeholder="New Password", id='password')}}
+                          {% for error in form.password.errors %}
+                          <span>{{error}}</span>
+                          {% endfor %}
+                        </div>
+                        <div class="login-child">
+                          {{form.confirmpassword(class="form-control input noround",placeholder="Confirm New Password",id='confirmpassword' )}}
+                          {% for error in form.confirmpassword.errors %}
+                          <span>{{error}}</span>
+                          {% endfor %}
+                        {{form.submit(class='btn col-12 login-butt')}}
+                        </div>
+                      </form>
+                </div>
+{% include 'user/footer.html' %}
+     

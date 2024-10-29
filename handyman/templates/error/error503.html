@@ -1,0 +1,10 @@
+{% extends 'error/error_templates.html' %}
+
+{% block error_msg %}
+        <h3>Not Found</h3>
+       <p>Kindly note that we are carrying a schduled maintenance from 12noon till 23:59.
+       To contact us on  the phone, please call +234 000 0000 000
+       </p>
+       
+       <a href="{{url_for('home')}}">Go To Home</a>  
+{% endblock error_msg %}
