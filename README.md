@@ -22,5 +22,5 @@ Handymen can showcase their skills, while customers can leave reviews and rating
 4. Run the application: `python starter.py`.
 
 ## Live Site
-[Handyman Platform](https://oloruntobiga.pythonanywhere.com)
+[Handyman Platform](https://myhandyman.pythonanywhere.com)
 
